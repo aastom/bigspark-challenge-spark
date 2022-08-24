@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  spark-master:
+    image: docker.io/bitnami/spark:3.3
+    env_file: .master.env
+    ports:
+      - '8080:8080'
+    networks:
+      - spark-net
+    volumes:
+      - spark-data:/opt/bitnami/spark/
+    restart: always
+
+  spark-worker:
+    depends_on:
+      - spark-master
+    image: docker.io/bitnami/spark:3.3
+    env_file: .worker.env
+    networks:
+      - spark-net
+    restart: always
+
+  zeppelin:
+    image: apache/zeppelin:0.10.1
+    ports:
+      - 9098:8080
+    volumes:
+      - zeppelin-logs:/logs
+      - zeppelin-notebook:/notebook
+      - spark-data:/opt/spark
+    env_file: .zeppelin.env
+    networks:
+      - spark-net
+    restart: always
+
+networks:
+  spark-net:
+    external:
+      name: spark-net
+
+volumes:
+  spark-data:
+  zeppelin-logs:
+    external: true
+  zeppelin-notebook:
+    external: true

@@ -1,0 +1,37 @@
+version: '2'
+
+services:
+  zeppelin:
+    image: apache/zeppelin:0.10.1
+    ports:
+      - 9098:8080
+    volumes:
+      - zeppelin-logs:/logs
+      - zeppelin-notebook:/notebook
+      - spark-content:${SPARK_HOME}
+    environment:
+      SPARK_MASTER: "${SPARK_MASTER_URL}"
+      MASTER: "${SPARK_MASTER_URL}"
+      SPARK_HOME: "${SPARK_HOME}"
+      ZEPPELIN_LOG_DIR: /logs
+      ZEPPELIN_NOTEBOOK_DIR: /notebook
+    networks:
+      - spark-net
+    restart: always
+
+networks:
+  spark-net:
+    external:
+      name: spark-net
+
+volumes:
+  spark-content:
+    external: true
+  zeppelin-logs:
+  zeppelin-notebook:
+    # networks:
+    #   zeppelin-net:
+    #     ipam:
+    #       driver: default
+    #       config:
+    #         - subnet: 192.168.213.0/24
