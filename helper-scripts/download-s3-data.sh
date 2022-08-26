@@ -1,13 +1,12 @@
 #!/bin/bash
 
-AWS_ACCESS_KEY_ID=<access-key-from-email>
-AWS_SECRET_ACCESS_KEY=<secret-key-from-email>
+AWS_ACCESS_KEY_ID=AKIA2533TSC3B63EISVV
+AWS_SECRET_ACCESS_KEY=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
+
 DATA_DIR=./data
 
-
 # check aws cli installed
-if ! command -v aws &> /dev/null
-then
+if ! command -v aws &>/dev/null; then
     echo "AWS CLI must be installed for this script to work"
     exit
 fi
