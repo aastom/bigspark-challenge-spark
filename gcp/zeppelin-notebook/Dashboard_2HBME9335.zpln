@@ -1,0 +1,801 @@
+{
+  "paragraphs": [
+    {
+      "title": "Sales count per store: Store sales",
+      "text": "%spark.sql\n\nSELECT COUNT(*) sales_count, s_store_name \nFROM store_sales \nJOIN store ON ss_store_sk \u003d s_store_sk \nGROUP BY s_store_name \nORDER BY sales_count DESC;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-26 15:04:27.557",
+      "progress": 93,
+      "config": {
+        "tableHide": false,
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 402.1,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "sum(cd_purchase_estimate)0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "cd_marital_status1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "store_sales_count": "string",
+                      "s_store_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "lineWithFocus": false
+                },
+                "pieChart": {},
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "i_category",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "i_most_expensive_item",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              },
+              "keys": [
+                {
+                  "name": "s_store_name",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "sales_count",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "sales_count\ts_store_name\n2045097\table\n2040769\tbar\n2035344\tese\n1527768\tcally\n1527405\teing\n1023019\tought\n1020221\tn st\n1015599\tpri\n1012262\tation\n504455\tanti\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d16"
+            },
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d17"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661417430017_245688859",
+      "id": "paragraph_1661417430017_245688859",
+      "dateCreated": "2022-08-25 08:50:30.017",
+      "dateStarted": "2022-08-26 15:04:27.561",
+      "dateFinished": "2022-08-26 15:04:38.869",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Net profit per store: Store sales",
+      "text": "%spark.sql\n\nSELECT s_store_name, \nSUM(ss_net_profit) net_profit\nFROM store_sales \nJOIN store ON ss_store_sk \u003d s_store_sk \nGROUP BY s_store_name\nORDER BY net_profit DESC;\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-26 15:04:38.878",
+      "progress": 80,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "multiBarChart",
+              "height": 404.7,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "sum(cd_purchase_estimate)0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "cd_marital_status1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "store_sales_count": "string",
+                      "s_store_name": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-180"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "lineWithFocus": false
+                },
+                "pieChart": {},
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "i_category",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "i_most_expensive_item",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              },
+              "keys": [
+                {
+                  "name": "s_store_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "net_profit",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "number_of_stores": "10"
+        },
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "s_store_name\tnet_profit\nanti\t-4.079150474899997E8\nation\t-8.217040245500007E8\npri\t-8.234012690099983E8\nn st\t-8.238120889799986E8\nought\t-8.299645068600001E8\ncally\t-1.2338819249400008E9\neing\t-1.2393956242000022E9\nese\t-1.6438737498099997E9\nbar\t-1.6468534335699987E9\nable\t-1.6554322858899996E9\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d19"
+            },
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d20"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661429547721_340622920",
+      "id": "paragraph_1661429547721_340622920",
+      "dateCreated": "2022-08-25 12:12:27.722",
+      "dateStarted": "2022-08-26 15:04:38.883",
+      "dateFinished": "2022-08-26 15:04:52.194",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Quantity of each item sold: Web sales",
+      "text": "%spark.sql\n\nSELECT i_product_name,\nSUM(ws_quantity) OVER(PARTITION BY i_product_name ORDER BY ws_quantity DESC) quantity_sold\nFROM web_sales\nJOIN item ON i_item_sk \u003d ws_item_sk\nWHERE i_product_name IS NOT NULL\nLIMIT ${upper_bound\u003d1000};\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-26 15:06:39.207",
+      "progress": 14,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 4.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "stackedAreaChart",
+              "height": 328.7,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "item_name0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "number_sold1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "i_product_name": "string",
+                      "number_sold": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "rotate",
+                  "stacked": true
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "rotate",
+                  "style": "stack"
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "lineWithFocus": false
+                },
+                "pieChart": {},
+                "scatterChart": {
+                  "xAxis": {
+                    "name": "i_category",
+                    "index": 0.0,
+                    "aggr": "sum"
+                  },
+                  "yAxis": {
+                    "name": "i_most_expensive_item",
+                    "index": 2.0,
+                    "aggr": "sum"
+                  }
+                }
+              },
+              "keys": [
+                {
+                  "name": "i_product_name",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "quantity_sold",
+                  "index": 1.0,
+                  "aggr": "sum"
+                }
+              ],
+              "commonSetting": {}
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {
+          "number_of_stores": "10",
+          "upper_bound": "1000",
+          "lower_bound": "0"
+        },
+        "forms": {
+          "upper_bound": {
+            "type": "TextBox",
+            "name": "upper_bound",
+            "displayName": "upper_bound",
+            "defaultValue": "1000",
+            "hidden": false
+          }
+        }
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "i_product_name\tquantity_sold\nable\t99\nable\t196\nable\t291\nable\t385\nable\t664\nable\t664\nable\t664\nable\t756\nable\t938\nable\t938\nable\t1027\nable\t1115\nable\t1285\nable\t1285\nable\t1367\nable\t1448\nable\t1527\nable\t1758\nable\t1758\nable\t1758\nable\t1834\nable\t2059\nable\t2059\nable\t2059\nable\t2131\nable\t2271\nable\t2271\nable\t2337\nable\t2401\nable\t2464\nable\t2526\nable\t2586\nable\t2763\nable\t2763\nable\t2763\nable\t2819\nable\t2873\nable\t2977\nable\t2977\nable\t3079\nable\t3079\nable\t3129\nable\t3177\nable\t3224\nable\t3314\nable\t3314\nable\t3356\nable\t3395\nable\t3469\nable\t3469\nable\t3539\nable\t3539\nable\t3571\nable\t3633\nable\t3633\nable\t3723\nable\t3723\nable\t3723\nable\t3751\nable\t3778\nable\t3799\nable\t3816\nable\t3848\nable\t3848\nable\t3863\nable\t3889\nable\t3889\nable\t3909\nable\t3909\nable\t3918\nable\t3926\nable\t3931\nable\t3934\nable\t3936\nableable\t100\nableable\t199\nableable\t294\nableable\t387\nableable\t479\nableable\t568\nableable\t652\nableable\t818\nableable\t818\nableable\t972\nableable\t972\nableable\t1046\nableable\t1192\nableable\t1192\nableable\t1264\nableable\t1335\nableable\t1471\nableable\t1471\nableable\t1601\nableable\t1601\nableable\t1729\nableable\t1729\nableable\t1792\nableable\t1910\nableable\t1910\nableable\t1964\nableable\t2070\nableable\t2070\nableable\t2174\nableable\t2174\nableable\t2222\nableable\t2316\nableable\t2316\nableable\t2362\nableable\t2406\nableable\t2449\nableable\t2533\nableable\t2533\nableable\t2653\nableable\t2653\nableable\t2653\nableable\t2689\nableable\t2724\nableable\t2792\nableable\t2792\nableable\t2825\nableable\t2847\nableable\t2865\nableable\t2881\nableable\t2911\nableable\t2911\nableable\t2939\nableable\t2939\nableable\t2949\nableable\t2949\nableable\t2950\nableableableableable\t98\nableableableableable\t187\nableableableableable\t439\nableableableableable\t439\nableableableableable\t439\nableableableableable\t521\nableableableableable\t683\nableableableableable\t683\nableableableableable\t843\nableableableableable\t843\nableableableableable\t920\nableableableableable\t996\nableableableableable\t1067\nableableableableable\t1205\nableableableableable\t1205\nableableableableable\t1341\nableableableableable\t1341\nableableableableable\t1408\nableableableableable\t1474\nableableableableable\t1538\nableableableableable\t1601\nableableableableable\t1662\nableableableableable\t1721\nableableableableable\t1837\nableableableableable\t1837\nableableableableable\t1949\nableableableableable\t1949\nableableableableable\t1999\nableableableableable\t2143\nableableableableable\t2143\nableableableableable\t2143\nableableableableable\t2190\nableableableableable\t2229\nableableableableable\t2263\nableableableableable\t2295\nableableableableable\t2388\nableableableableable\t2388\nableableableableable\t2388\nableableableableable\t2418\nableableableableable\t2444\nableableableableable\t2468\nableableableableable\t2491\nableableableableable\t2510\nableableableableable\t2544\nableableableableable\t2544\nableableableableable\t2570\nableableableableable\t2570\nableableableableable\t2582\nableableableableable\t2591\nableableableableable\t2607\nableableableableable\t2607\nableableableableable\t2611\nableableableableable\t2614\nableableableableese\t198\nableableableableese\t198\nableableableableese\t296\nableableableableese\t391\nableableableableese\t485\nableableableableese\t571\nableableableableese\t655\nableableableableese\t735\nableableableableese\t808\nableableableableese\t879\nableableableableese\t948\nableableableableese\t1012\nableableableableese\t1064\nableableableableese\t1100\nableableableableese\t1133\nableableableableese\t1163\nableableableableese\t1191\nableableableableese\t1195\nableableableableese\t1201\nableableableableese\t1201\nableableableableought\t100\nableableableableought\t278\nableableableableought\t278\nableableableableought\t361\nableableableableought\t439\nableableableableought\t510\nableableableableought\t580\nableableableableought\t646\nableableableableought\t711\nableableableableought\t775\nableableableableought\t838\nableableableableought\t960\nableableableableought\t960\nableableableableought\t1020\nableableableableought\t1138\nableableableableought\t1138\nableableableableought\t1192\nableableableableought\t1245\nableableableableought\t1297\nableableableableought\t1342\nableableableableought\t1386\nableableableableought\t1497\nableableableableought\t1497\nableableableableought\t1497\nableableableableought\t1557\nableableableableought\t1557\nableableableableought\t1582\nableableableableought\t1605\nableableableableought\t1625\nableableableableought\t1643\nableableableableought\t1660\nableableableableought\t1676\nableableableableought\t1687\nableableableableought\t1703\nableableableableought\t1703\nableableableableought\t1704\nableableableanti\t100\nableableableanti\t292\nableableableanti\t292\nableableableanti\t386\nableableableanti\t572\nableableableanti\t572\nableableableanti\t663\nableableableanti\t843\nableableableanti\t843\nableableableanti\t932\nableableableanti\t1108\nableableableanti\t1108\nableableableanti\t1194\nableableableanti\t1279\nableableableanti\t1445\nableableableanti\t1445\nableableableanti\t1527\nableableableanti\t1689\nableableableanti\t1689\nableableableanti\t1769\nableableableanti\t1923\nableableableanti\t1923\nableableableanti\t1998\nableableableanti\t2071\nableableableanti\t2287\nableableableanti\t2287\nableableableanti\t2287\nableableableanti\t2559\nableableableanti\t2559\nableableableanti\t2559\nableableableanti\t2559\nableableableanti\t2623\nableableableanti\t2686\nableableableanti\t2748\nableableableanti\t2807\nableableableanti\t2865\nableableableanti\t2921\nableableableanti\t2972\nableableableanti\t3168\nableableableanti\t3168\nableableableanti\t3168\nableableableanti\t3168\nableableableanti\t3262\nableableableanti\t3262\nableableableanti\t3306\nableableableanti\t3390\nableableableanti\t3390\nableableableanti\t3431\nableableableanti\t3471\nableableableanti\t3510\nableableableanti\t3548\nableableableanti\t3585\nableableableanti\t3621\nableableableanti\t3655\nableableableanti\t3688\nableableableanti\t3720\nableableableanti\t3750\nableableableanti\t3779\nableableableanti\t3831\nableableableanti\t3831\nableableableanti\t3853\nableableableanti\t3874\nableableableanti\t3912\nableableableanti\t3912\nableableableanti\t3929\nableableableanti\t3957\nableableableanti\t3957\nableableableanti\t3983\nableableableanti\t3983\nableableableanti\t4007\nableableableanti\t4007\nableableableanti\t4017\nableableableanti\t4026\nableableableanti\t4034\nableableableanti\t4041\nableableableanti\t4046\nableableableanti\t4049\nableableableanti\t4051\nableableableantiese\t196\nableableableantiese\t196\nableableableantiese\t292\nableableableantiese\t380\nableableableantiese\t465\nableableableantiese\t544\nableableableantiese\t618\nableableableantiese\t758\nableableableantiese\t758\nableableableantiese\t896\nableableableantiese\t896\nableableableantiese\t946\nableableableantiese\t995\nableableableantiese\t1027\nableableableantiese\t1087\nableableableantiese\t1087\nableableableantiese\t1114\nableableableantiese\t1137\nableableableantiese\t1154\nableableableantiese\t1167\nableableableantiese\t1178\nableableableantipri\t291\nableableableantipri\t291\nableableableantipri\t291\nableableableantipri\t385\nableableableantipri\t478\nableableableantipri\t569\nableableableantipri\t659\nableableableantipri\t748\nableableableantipri\t834\nableableableantipri\t919\nableableableantipri\t1003\nableableableantipri\t1169\nableableableantipri\t1169\nableableableantipri\t1250\nableableableantipri\t1329\nableableableantipri\t1407\nableableableantipri\t1484\nableableableantipri\t1636\nableableableantipri\t1636\nableableableantipri\t1786\nableableableantipri\t1786\nableableableantipri\t1928\nableableableantipri\t1928\nableableableantipri\t1997\nableableableantipri\t2061\nableableableantipri\t2124\nableableableantipri\t2310\nableableableantipri\t2310\nableableableantipri\t2310\nableableableantipri\t2371\nableableableantipri\t2491\nableableableantipri\t2491\nableableableantipri\t2548\nableableableantipri\t2602\nableableableantipri\t2761\nableableableantipri\t2761\nableableableantipri\t2761\nableableableantipri\t2813\nableableableantipri\t2864\nableableableantipri\t2914\nableableableantipri\t2963\nableableableantipri\t3059\nableableableantipri\t3059\nableableableantipri\t3149\nableableableantipri\t3149\nableableableantipri\t3192\nableableableantipri\t3360\nableableableantipri\t3360\nableableableantipri\t3360\nableableableantipri\t3360\nableableableantipri\t3400\nableableableantipri\t3436\nableableableantipri\t3471\nableableableantipri\t3504\nableableableantipri\t3568\nableableableantipri\t3568\nableableableantipri\t3626\nableableableantipri\t3626\nableableableantipri\t3710\nableableableantipri\t3710\nableableableantipri\t3710\nableableableantipri\t3737\nableableableantipri\t3789\nableableableantipri\t3789\nableableableantipri\t3814\nableableableantipri\t3837\nableableableantipri\t3881\nableableableantipri\t3881\nableableableantipri\t3921\nableableableantipri\t3921\nableableableantipri\t3936\nableableableantipri\t3962\nableableableantipri\t3962\nableableableantipri\t3998\nableableableantipri\t3998\nableableableantipri\t3998\nableableableantipri\t4031\nableableableantipri\t4031\nableableableantipri\t4031\nableableableantipri\t4041\nableableableantipri\t4057\nableableableantipri\t4057\nableableableantipri\t4063\nableableableantipri\t4073\nableableableantipri\t4073\nableableableantipri\t4077\nableableableantipri\t4083\nableableableantipri\t4083\nableableableantipri\t4091\nableableableantipri\t4091\nableableableantipri\t4091\nableableableantipri\t4091\nableableableantipri\t4092\nableableableationable\t98\nableableableationable\t189\nableableableationable\t355\nableableableationable\t355\nableableableationable\t433\nableableableationable\t506\nableableableationable\t578\nableableableationable\t649\nableableableationable\t716\nableableableationable\t887\nableableableationable\t887\nableableableationable\t887\nableableableationable\t939\nableableableationable\t989\nableableableationable\t1033\nableableableationable\t1119\nableableableationable\t1119\nableableableationable\t1159\nableableableationable\t1233\nableableableationable\t1233\nableableableationable\t1268\nableableableationable\t1299\nableableableationable\t1328\nableableableationable\t1356\nableableableationable\t1378\nableableableationable\t1398\nableableableationable\t1434\nableableableationable\t1434\nableableableationable\t1468\nableableableationable\t1468\nableableableationable\t1482\nableableableationable\t1493\nableableableationable\t1503\nableableableationable\t1509\nableableableationable\t1517\nableableableationable\t1517\nableableableationpri\t98\nableableableationpri\t292\nableableableationpri\t292\nableableableationpri\t387\nableableableationpri\t575\nableableableationpri\t575\nableableableationpri\t668\nableableableationpri\t760\nableableableationpri\t851\nableableableationpri\t939\nableableableationpri\t1025\nableableableationpri\t1109\nableableableationpri\t1191\nableableableationpri\t1272\nableableableationpri\t1432\nableableableationpri\t1432\nableableableationpri\t1511\nableableableationpri\t1588\nableableableationpri\t1656\nableableableationpri\t1722\nableableableationpri\t1787\nableableableationpri\t1915\nableableableationpri\t1915\nableableableationpri\t1978\nableableableationpri\t2038\nableableableationpri\t2156\nableableableationpri\t2156\nableableableationpri\t2272\nableableableationpri\t2272\nableableableationpri\t2326\nableableableationpri\t2378\nableableableationpri\t2429\nableableableationpri\t2478\nableableableationpri\t2574\nableableableationpri\t2574\nableableableationpri\t2666\nableableableationpri\t2666\nableableableationpri\t2708\nableableableationpri\t2748\nableableableationpri\t2787\nableableableationpri\t2821\nableableableationpri\t2850\nableableableationpri\t2906\nableableableationpri\t2906\nableableableationpri\t2929\nableableableationpri\t2950\nableableableationpri\t2963\nableableableationpri\t2975\nableableableationpri\t2984\nableableableationpri\t2992\nableableableationpri\t3006\nableableableationpri\t3006\nableableableationpri\t3011\nableableableationpri\t3012\nableableablebarable\t100\nableableablebarable\t199\nableableablebarable\t297\nableableablebarable\t491\nableableablebarable\t491\nableableablebarable\t587\nableableablebarable\t682\nableableablebarable\t964\nableableablebarable\t964\nableableablebarable\t964\nableableablebarable\t1056\nableableablebarable\t1146\nableableablebarable\t1324\nableableablebarable\t1324\nableableablebarable\t1588\nableableablebarable\t1588\nableableablebarable\t1588\nableableablebarable\t1760\nableableablebarable\t1760\nableableablebarable\t1845\nableableablebarable\t2013\nableableablebarable\t2013\nableableablebarable\t2096\nableableablebarable\t2178\nableableablebarable\t2498\nableableablebarable\t2498\nableableablebarable\t2498\nableableablebarable\t2498\nableableablebarable\t2576\nableableablebarable\t2648\nableableablebarable\t2719\nableableablebarable\t2789\nableableablebarable\t2927\nableableablebarable\t2927\nableableablebarable\t2994\nableableablebarable\t3060\nableableablebarable\t3190\nableableablebarable\t3190\nableableablebarable\t3253\nableableablebarable\t3315\nableableablebarable\t3373\nableableablebarable\t3429\nableableablebarable\t3484\nableableablebarable\t3538\nableableablebarable\t3586\nableableablebarable\t3680\nableableablebarable\t3680\nableableablebarable\t3726\nableableablebarable\t3861\nableableablebarable\t3861\nableableablebarable\t3861\nableableablebarable\t3904\nableableablebarable\t3988\nableableablebarable\t3988\nableableablebarable\t4028\nableableablebarable\t4102\nableableablebarable\t4102\nableableablebarable\t4174\nableableablebarable\t4174\nableableablebarable\t4209\nableableablebarable\t4239\nableableablebarable\t4266\nableableablebarable\t4318\nableableablebarable\t4318\nableableablebarable\t4342\nableableablebarable\t4365\nableableablebarable\t4386\nableableablebarable\t4406\nableableablebarable\t4425\nableableablebarable\t4443\nableableablebarable\t4460\nableableablebarable\t4476\nableableablebarable\t4488\nableableablebarable\t4543\nableableablebarable\t4543\nableableablebarable\t4543\nableableablebarable\t4543\nableableablebarable\t4543\nableableablebarable\t4552\nableableablebarable\t4560\nableableablebarable\t4574\nableableablebarable\t4574\nableableablebarable\t4592\nableableablebarable\t4592\nableableablebarable\t4592\nableableablebarable\t4597\nableableablebarable\t4601\nableableablebarable\t4603\nableableablebarable\t4604\nableableablebaranti\t196\nableableablebaranti\t196\nableableablebaranti\t293\nableableablebaranti\t389\nableableablebaranti\t484\nableableablebaranti\t576\nableableablebaranti\t667\nableableablebaranti\t756\nableableablebaranti\t932\nableableablebaranti\t932\nableableablebaranti\t1193\nableableablebaranti\t1193\nableableablebaranti\t1193\nableableablebaranti\t1365\nableableablebaranti\t1365\nableableablebaranti\t1446\nableableablebaranti\t1526\nableableablebaranti\t1680\nableableablebaranti\t1680\nableableablebaranti\t1756\nableableablebaranti\t1830\nableableablebaranti\t1903\nableableablebaranti\t1974\nableableablebaranti\t2044\nableableablebaranti\t2182\nableableablebaranti\t2182\nableableablebaranti\t2248\nableableablebaranti\t2376\nableableablebaranti\t2376\nableableablebaranti\t2500\nableableablebaranti\t2500\nableableablebaranti\t2560\nableableablebaranti\t2618\nableableablebaranti\t2673\nableableablebaranti\t2727\nableableablebaranti\t2777\nableableablebaranti\t2822\nableableablebaranti\t2864\nableableablebaranti\t2902\nableableablebaranti\t3013\nableableablebaranti\t3013\nableableablebaranti\t3013\nableableablebaranti\t3045\nableableablebaranti\t3074\nableableablebaranti\t3124\nableableablebaranti\t3124\nableableablebaranti\t3147\nableableablebaranti\t3169\nableableablebaranti\t3211\nableableablebaranti\t3211\nableableablebaranti\t3249\nableableablebaranti\t3249\nableableablebaranti\t3267\nableableablebaranti\t3318\nableableablebaranti\t3318\nableableablebaranti\t3318\nableableablebaranti\t3334\nableableablebaranti\t3364\nableableablebaranti\t3364\nableableablebaranti\t3392\nableableablebaranti\t3392\nableableablebaranti\t3405\nableableablebaranti\t3411\nableableablebaranti\t3413\nableableablebaranti\t3415\nableableablebaranti\t3415\nableableablebarese\t100\nableableablebarese\t197\nableableablebarese\t389\nableableablebarese\t389\nableableablebarese\t484\nableableablebarese\t672\nableableablebarese\t672\nableableablebarese\t764\nableableablebarese\t855\nableableablebarese\t945\nableableablebarese\t1034\nableableablebarese\t1121\nableableablebarese\t1291\nableableablebarese\t1291\nableableablebarese\t1374\nableableablebarese\t1538\nableableablebarese\t1538\nableableablebarese\t1775\nableableablebarese\t1775\nableableablebarese\t1775\nableableablebarese\t1853\nableableablebarese\t1928\nableableablebarese\t2074\nableableablebarese\t2074\nableableablebarese\t2218\nableableablebarese\t2218\nableableablebarese\t2289\nableableablebarese\t2358\nableableablebarese\t2425\nableableablebarese\t2491\nableableablebarese\t2556\nableableablebarese\t2684\nableableablebarese\t2684\nableableablebarese\t2810\nableableablebarese\t2810\nableableablebarese\t2864\nableableablebarese\t2915\nableableablebarese\t3059\nableableablebarese\t3059\nableableablebarese\t3059\nableableablebarese\t3106\nableableablebarese\t3147\nableableablebarese\t3187\nableableablebarese\t3225\nableableablebarese\t3262\nableableablebarese\t3298\nableableablebarese\t3332\nableableablebarese\t3357\nableableablebarese\t3379\nableableablebarese\t3399\nableableablebarese\t3417\nableableablebarese\t3431\nableableablebarese\t3440\nableableablebarese\t3447\nableableablebarese\t3465\nableableablebarese\t3465\nableableablebarese\t3465\nableableablebarese\t3475\nableableablebarese\t3475\nableableablebarese\t3481\nableableablebarese\t3481\nableableablebarese\t3481\nableableablebarpri\t99\nableableablebarpri\t197\nableableablebarpri\t293\nableableablebarpri\t385\nableableablebarpri\t473\nableableablebarpri\t554\nableableablebarpri\t714\nableableablebarpri\t714\nableableablebarpri\t792\nableableablebarpri\t866\nableableablebarpri\t938\nableableablebarpri\t1008\nableableablebarpri\t1074\nableableablebarpri\t1137\nableableablebarpri\t1196\nableableablebarpri\t1254\nableableablebarpri\t1311\nableableablebarpri\t1367\nableableablebarpri\t1422\nableableablebarpri\t1475\nableableablebarpri\t1521\nableableablebarpri\t1565\nableableablebarpri\t1647\nableableablebarpri\t1647\nableableablebarpri\t1674\nableableablebarpri\t1696\nableableablebarpri\t1714\nableableablebarpri\t1731\nableableablebarpri\t1743\nableableablebarpri\t1752\nableableablebarpri\t1760\nableableablebarpri\t1767\nableableablebarpri\t1770\nableableablecally\t100\nableableablecally\t186\nableableablecally\t268\nableableablecally\t347\nableableablecally\t424\nableableablecally\t500\nableableablecally\t573\nableableablecally\t644\nableableablecally\t714\nableableablecally\t782\nableableablecally\t845\nableableablecally\t898\nableableablecally\t942\nableableablecally\t985\nableableablecally\t1022\nableableablecally\t1052\nableableablecally\t1077\nableableablecally\t1097\nableableablecally\t1114\nableableablecally\t1129\nableableablecally\t1135\nableableablecally\t1140\nableableablecally\t1142\nableableablecallyable\t200\nableableablecallyable\t200\nableableablecallyable\t298\nableableablecallyable\t492\nableableablecallyable\t492\nableableablecallyable\t587\nableableablecallyable\t775\nableableablecallyable\t775\nableableablecallyable\t868\nableableablecallyable\t1141\nableableablecallyable\t1141\nableableablecallyable\t1141\nableableablecallyable\t1231\nableableablecallyable\t1320\nableableablecallyable\t1496\nableableablecallyable\t1496\nableableablecallyable\t1670\nableableablecallyable\t1670\nableableablecallyable\t1756\nableableablecallyable\t1926\nableableablecallyable\t1926\nableableablecallyable\t2009\nableableablecallyable\t2091\nableableablecallyable\t2172\nableableablecallyable\t2409\nableableablecallyable\t2409\nableableablecallyable\t2409\nableableablecallyable\t2559\nableableablecallyable\t2559\nableableablecallyable\t2632\nableableablecallyable\t2704\nableableablecallyable\t2774\nableableablecallyable\t2843\nableableablecallyable\t2911\nableableablecallyable\t2978\nableableablecallyable\t3043\nableableablecallyable\t3107\nableableablecallyable\t3170\nableableablecallyable\t3232\nableableablecallyable\t3293\nableableablecallyable\t3352\nableableablecallyable\t3410\nableableablecallyable\t3524\nableableablecallyable\t3524\nableableablecallyable\t3636\nableableablecallyable\t3636\nableableablecallyable\t3740\nableableablecallyable\t3740\nableableablecallyable\t3790\nableableablecallyable\t3838\nableableablecallyable\t3884\nableableablecallyable\t3929\nableableablecallyable\t3972\nableableablecallyable\t4014\nableableablecallyable\t4055\nableableablecallyable\t4169\nableableablecallyable\t4169\nableableablecallyable\t4169\nableableablecallyable\t4206\nableableablecallyable\t4242\nableableablecallyable\t4312\nableableablecallyable\t4312\nableableablecallyable\t4345\nableableablecallyable\t4375\nableableablecallyable\t4401\nableableablecallyable\t4425\nableableablecallyable\t4459\nableableablecallyable\t4459\nableableablecallyable\t4475\nableableablecallyable\t4503\nableableablecallyable\t4503\nableableablecallyable\t4515\nableableablecallyable\t4526\nableableablecallyable\t4544\nableableablecallyable\t4544\nableableablecallyable\t4552\nableableablecallyable\t4562\nableableablecallyable\t4562\nableableablecallyable\t4566\nableableablecallyese\t98\nableableablecallyese\t194\nableableablecallyese\t384\nableableablecallyese\t384\nableableablecallyese\t477\nableableablecallyese\t661\nableableablecallyese\t661\nableableablecallyese\t752\nableableablecallyese\t841\nableableablecallyese\t927\nableableablecallyese\t1097\nableableablecallyese\t1097\nableableablecallyese\t1179\nableableablecallyese\t1260\nableableablecallyese\t1338\nableableablecallyese\t1415\nableableablecallyese\t1491\nableableablecallyese\t1635\nableableablecallyese\t1635\nableableablecallyese\t1705\nableableablecallyese\t1770\nableableablecallyese\t1898\nableableablecallyese\t1898\nableableablecallyese\t1960\nableableablecallyese\t2019\nableableablecallyese\t2076\nableableablecallyese\t2184\nableableablecallyese\t2184\nableableablecallyese\t2286\nableableablecallyese\t2286\nableableablecallyese\t2386\nableableablecallyese\t2386\nableableablecallyese\t2435\nableableablecallyese\t2531\nableableablecallyese\t2531\nableableablecallyese\t2576\nableableablecallyese\t2658\nableableablecallyese\t2658\nableableablecallyese\t2693\nableableablecallyese\t2747\nableableablecallyese\t2747\nableableablecallyese\t2770\nableableablecallyese\t2792\nableableablecallyese\t2834\nableableablecallyese\t2834\nableableablecallyese\t2854\nableableablecallyese\t2873\nableableablecallyese\t2921\nableableablecallyese\t2921\nableableablecallyese\t2921\nableableablecallyese\t2934\nableableablecallyese\t2958\nableableablecallyese\t2958\nableableablecallyese\t2968\nableableablecallyese\t2976\nableableablecallyese\t2990\nableableablecallyese\t2990\nableableablecallyese\t2996\nableableablecallyese\t3006\nableableablecallyese\t3006\nableableablecallyese\t3009\nableableablecallypri\t87\nableableablecallypri\t169\nableableablecallypri\t247\nableableablecallypri\t323\nableableablecallypri\t394\nableableablecallypri\t460\nableableablecallypri\t588\nableableablecallypri\t588\nableableablecallypri\t651\nableableablecallypri\t713\nableableablecallypri\t769\nableableablecallypri\t824\nableableablecallypri\t875\nableableablecallypri\t925\nableableablecallypri\t973\nableableablecallypri\t1013\nableableablecallypri\t1051\nableableablecallypri\t1125\nableableablecallypri\t1125\nableableablecallypri\t1159\nableableablecallypri\t1191\nableableablecallypri\t1220\nableableablecallypri\t1248\nableableablecallypri\t1266\nableableablecallypri\t1274\nableableablecallypri\t1280\nableableablecallypri\t1285\nableableablecallypri\t1293\nableableablecallypri\t1293\nableableableeing\t99\nableableableeing\t393\nableableableeing\t393\nableableableeing\t393\nableableableeing\t489\nableableableeing\t584\nableableableeing\t676\nableableableeing\t858\nableableableeing\t858\nableableableeing\t946\nableableableeing\t1033\nableableableeing\t1288\nableableableeing\t1288\nableableableeing\t1288\nableableableeing\t1450\nableableableeing\t1450\nableableableeing\t1602\nableableableeing\t1602\nableableableeing\t1674\nableableableeing\t1745\nableableableeing\t1815\nableableableeing\t1882\nableableableeing\t1946\nableableableeing\t2009\nableableableeing\t2195\nableableableeing\t2195\nableableableeing\t2195\nableableableeing\t2317\nableableableeing\t2317\nableableableeing\t2497\nableableableeing\t2497\nableableableeing\t2497\nableableableeing\t2556\nableableableeing\t2610\nableableableeing\t2663\nableableableeing\t2715\nableableableeing\t2763\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d22"
+            },
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d23"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661438534577_1639896043",
+      "id": "paragraph_1661438534577_1639896043",
+      "dateCreated": "2022-08-25 14:42:14.578",
+      "dateStarted": "2022-08-26 15:04:52.212",
+      "dateFinished": "2022-08-26 15:05:01.979",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Most expensive and cheapest items in each category",
+      "text": "%spark.sql\n\nWITH item_c AS(\n    SELECT DISTINCT i_category, \n    CASE\n        WHEN FIRST_VALUE(i_product_name) OVER w  IS NOT NULL THEN FIRST_VALUE(i_product_name) OVER w \n        ELSE \u0027unknown\u0027\n    END most_expensive_item, \n    CASE\n        WHEN LAST_VALUE(i_product_name) OVER w IS NOT NULL THEN LAST_VALUE(i_product_name) OVER w \n        ELSE \u0027unknown\u0027\n    END cheapest_item, \n    MAX(i_current_price) OVER w price_most_expensive_item,\n    MIN(i_current_price) OVER w price_cheapest_item\n    FROM item\n    WHERE i_category IS NOT NULL\n    WINDOW w AS(\n            PARTITION BY i_category ORDER BY i_current_price DESC\n            RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n        )\n)\nSELECT * FROM item_c;",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-26 15:05:02.054",
+      "progress": 0,
+      "config": {
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/sql",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 394.0,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {
+                    "columns": [
+                      {
+                        "name": "i_category0",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "most_expensive_item1",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "cheapest_item2",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "price_most_expensive_item3",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      },
+                      {
+                        "name": "price_cheapest_item4",
+                        "visible": true,
+                        "width": "*",
+                        "sort": {},
+                        "filters": [
+                          {}
+                        ],
+                        "pinned": ""
+                      }
+                    ],
+                    "scrollFocus": {},
+                    "selection": [],
+                    "grouping": {
+                      "grouping": [],
+                      "aggregations": [],
+                      "rowExpandedStates": {}
+                    },
+                    "treeView": {},
+                    "pagination": {
+                      "paginationCurrentPage": 1.0,
+                      "paginationPageSize": 250.0
+                    }
+                  },
+                  "tableColumnTypeState": {
+                    "names": {
+                      "i_category": "string",
+                      "most_expensive_item": "string",
+                      "cheapest_item": "string",
+                      "price_most_expensive_item": "string",
+                      "price_cheapest_item": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "style": "stack"
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default",
+                  "stacked": false
+                },
+                "lineChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "i_category",
+                  "index": 0.0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [
+                {
+                  "name": "most_expensive_item",
+                  "index": 1.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "cheapest_item",
+                  "index": 2.0,
+                  "aggr": "sum"
+                }
+              ],
+              "values": [
+                {
+                  "name": "price_most_expensive_item",
+                  "index": 3.0,
+                  "aggr": "sum"
+                },
+                {
+                  "name": "price_cheapest_item",
+                  "index": 4.0,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TABLE",
+            "data": "i_category\tmost_expensive_item\tcheapest_item\tprice_most_expensive_item\tprice_cheapest_item\nBooks\toughtn steingpri\tationeseesepriable\t99.99\t0.09\nChildren\tcallypricallyeseese\tesepriesebarpri\t99.68\t0.09\nElectronics\tn stoughtcallybarpri\tunknown\t99.97\t0.09\nHome\teseableoughtbarpri\tunknown\t99.98\t0.09\nJewelry\tcallyeingeingableanti\tbarantiprin stable\t99.97\t0.09\nMen\tationoughtn stcallyable\toughtoughtprin stable\t99.72\t0.09\nMusic\tationn stn stantiese\tcallyesebareseable\t99.74\t0.09\nShoes\tn stantiantieseought\tcallyprioughtpripri\t99.82\t0.09\nSports\tationpriableation\tunknown\t99.85\t0.09\nWomen\tcallyprieingantiese\tantiantiantipriought\t99.25\t0.09\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d24"
+            },
+            {
+              "jobUrl": "http://f68be5cb5dbc:4040/jobs/job?id\u003d25"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661458807708_435956686",
+      "id": "paragraph_1661458807708_435956686",
+      "dateCreated": "2022-08-25 20:20:07.715",
+      "dateStarted": "2022-08-26 15:05:02.077",
+      "dateFinished": "2022-08-26 15:05:02.739",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark.sql\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-08-26 15:05:03.001",
+      "progress": 0,
+      "config": {
+        "colWidth": 12.0,
+        "fontSize": 9.0,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1661468097371_622569145",
+      "id": "paragraph_1661468097371_622569145",
+      "dateCreated": "2022-08-25 22:54:57.371",
+      "dateStarted": "2022-08-26 15:05:03.016",
+      "dateFinished": "2022-08-26 15:05:03.026",
+      "status": "FINISHED"
+    }
+  ],
+  "name": "Dashboard",
+  "id": "2HBME9335",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.10.1",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  }
+}

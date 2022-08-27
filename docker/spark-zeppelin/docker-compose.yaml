@@ -4,9 +4,6 @@ services:
   spark-master:
     image: docker.io/bitnami/spark:3.3
     env_file: .master.env
-    environment:
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
     ports:
       - '8080:8080'
     networks:
@@ -19,11 +16,7 @@ services:
     depends_on:
       - spark-master
     image: docker.io/bitnami/spark:3.3
-    env_file:
-      - .worker.env
-    environment:
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    env_file: .worker.env
     networks:
       - spark-net
     volumes:
@@ -40,12 +33,7 @@ services:
       - zeppelin-notebook:/notebook
       - spark-data:/opt/spark
       - tpcds-data:/usr/local/tpcds_data
-    env_file:
-      - .zeppelin.env
-      - .env
-    environment:
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+    env_file: .zeppelin.env
     networks:
       - spark-net
     restart: always
