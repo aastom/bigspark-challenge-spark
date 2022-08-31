@@ -5,21 +5,16 @@
 resource "google_storage_bucket" "zeppelin-bucket" {
   name          = var.zeppelin_bucket
   location      = var.location
-  force_destroy = "true" 
+  force_destroy = "true"
 }
 
 # copy local notebooks to Google Storage
 resource "null_resource" "upload_zeppelin_notebooks" {
   triggers = {
-
     file_hashes = jsonencode({
-
       for fn in fileset(var.notebook_path, "**") :
-
       fn => filesha256("${var.notebook_path}/${fn}")
-
     })
-
   }
   provisioner "local-exec" {
     command = "gsutil cp -r ${var.notebook_path}/* gs://${var.zeppelin_bucket}/notebooks/"
@@ -70,7 +65,7 @@ resource "google_dataproc_cluster" "bigspark-cluster" {
         "dataproc:dataproc.allow.zero.workers" = "true"
         "zeppelin:zeppelin.notebook.gcs.dir"   = "gs://${var.zeppelin_bucket}/notebooks"
       }
-      optional_components = ["ZEPPELIN"]
+      optional_components = var.additional_components
     }
 
 

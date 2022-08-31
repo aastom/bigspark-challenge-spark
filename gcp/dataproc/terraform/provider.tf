@@ -8,11 +8,10 @@ terraform {
 }
 
 provider "google" {
-  project = var.project
-
-  region = var.region
-
-  zone = var.zone
+  credentials = file(var.credentials)
+  project     = var.project
+  region      = var.region
+  zone        = var.zone
 }
 
 provider "null" {
