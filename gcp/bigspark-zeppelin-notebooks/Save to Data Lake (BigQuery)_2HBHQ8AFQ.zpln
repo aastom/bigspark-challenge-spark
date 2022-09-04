@@ -1,0 +1,461 @@
+{
+  "paragraphs": [
+    {
+      "title": "Net return losses for each date",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval netReturnLossDF \u003d sqlContext.table(\"net_return_losses\")\nnetReturnLossDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.net_return_losses\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:09.136",
+      "progress": 100,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mnetReturnLossDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [store_net_loss: double, web_net_loss: double ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d68"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662289053412_301845036",
+      "id": "paragraph_1662289053412_301845036",
+      "dateCreated": "2022-09-04 10:57:33.412",
+      "dateStarted": "2022-09-04 13:44:09.340",
+      "dateFinished": "2022-09-04 13:44:27.035",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Sales traffic for each promotion",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval promotionSalesDF \u003d sqlContext.table(\"promotion_sales\")\npromotionSalesDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.promotion_sales\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:27.062",
+      "progress": 100,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mpromotionSalesDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [promo_name: string, ss_sales_count: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d69"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294325325_505110071",
+      "id": "paragraph_1662294325325_505110071",
+      "dateCreated": "2022-09-04 12:25:25.325",
+      "dateStarted": "2022-09-04 13:44:27.969",
+      "dateFinished": "2022-09-04 13:44:35.569",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Net profit on each weekday",
+      "text": "%spark\nimport org.apache.spark.sql.SaveMode._\n\nval weekdayNetProfitsDF \u003d sqlContext.table(\"weekday_net_profits\")\nweekdayNetProfitsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.weekday_net_profits\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:35.583",
+      "progress": 78,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mweekdayNetProfitsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [day: string, store_sales: double ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d70"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294612615_986732896",
+      "id": "paragraph_1662294612615_986732896",
+      "dateCreated": "2022-09-04 12:30:12.615",
+      "dateStarted": "2022-09-04 13:44:35.949",
+      "dateFinished": "2022-09-04 13:44:41.377",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Sales volume on each weekday ",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval weekdaySalesDF \u003d sqlContext.table(\"weekday_sales\")\nweekdaySalesDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.weekday_sales\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:41.450",
+      "progress": 100,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mweekdaySalesDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [day: string, store_sales: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d71"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294708271_1691761972",
+      "id": "paragraph_1662294708271_1691761972",
+      "dateCreated": "2022-09-04 12:31:48.271",
+      "dateStarted": "2022-09-04 13:44:41.718",
+      "dateFinished": "2022-09-04 13:44:46.771",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Frequently returned items",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval frequentlyReturnedItemsDF \u003d sqlContext.table(\"frequently_returned_items\")\nfrequentlyReturnedItemsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.frequently_returned_items\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:46.825",
+      "progress": 100,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mfrequentlyReturnedItemsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [ws_return_count: bigint, ss_return_count: bigint ... 1 more field]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d72"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294768740_501193347",
+      "id": "paragraph_1662294768740_501193347",
+      "dateCreated": "2022-09-04 12:32:48.740",
+      "dateStarted": "2022-09-04 13:44:47.147",
+      "dateFinished": "2022-09-04 13:44:52.177",
+      "status": "FINISHED"
+    },
+    {
+      "title": "The educational status of web item returners ",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval educationalStatusWebItemReturnersDF \u003d sqlContext.table(\"educational_status_web_item_returners\")\neducationalStatusWebItemReturnersDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.educational_status_web_item_returners\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:49:50.282",
+      "progress": 100,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34meducationalStatusWebItemReturnersDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [web_education_status: string, web_demo_count: bigint]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d73"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294863377_1702781161",
+      "id": "paragraph_1662294863377_1702781161",
+      "dateCreated": "2022-09-04 12:34:23.377",
+      "dateStarted": "2022-09-04 13:44:52.512",
+      "dateFinished": "2022-09-04 13:44:57.587",
+      "status": "FINISHED"
+    },
+    {
+      "title": "Most expensive and cheapest items in each category",
+      "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval mostExpensiveCheapestItemsDF \u003d sqlContext.table(\"most_expensive_cheapest_items\")\nmostExpensiveCheapestItemsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.most_expensive_cheapest_items\")\n    .save()",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:44:57.618",
+      "progress": 90,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "title": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "import org.apache.spark.sql.SaveMode._\n\u001b[1m\u001b[34mmostExpensiveCheapestItemsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [category: string, most_expensive_item: string ... 3 more fields]\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "SPARK JOB",
+          "tooltip": "View in Spark web UI",
+          "group": "spark",
+          "values": [
+            {
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d74"
+            }
+          ],
+          "interpreterSettingId": "spark"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294937281_1109368826",
+      "id": "paragraph_1662294937281_1109368826",
+      "dateCreated": "2022-09-04 12:35:37.281",
+      "dateStarted": "2022-09-04 13:44:57.934",
+      "dateFinished": "2022-09-04 13:45:02.291",
+      "status": "FINISHED"
+    },
+    {
+      "text": "%spark\n",
+      "user": "anonymous",
+      "dateUpdated": "2022-09-04 13:45:02.333",
+      "progress": 0,
+      "config": {
+        "tableHide": true,
+        "editorSetting": {
+          "completionKey": "TAB",
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
+        },
+        "colWidth": 12.0,
+        "editorMode": "ace/mode/scala",
+        "fontSize": 9.0,
+        "editorHide": true,
+        "results": {},
+        "enabled": true
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1662294996578_2035905176",
+      "id": "paragraph_1662294996578_2035905176",
+      "dateCreated": "2022-09-04 12:36:36.578",
+      "dateStarted": "2022-09-04 13:45:02.682",
+      "dateFinished": "2022-09-04 13:45:03.251",
+      "status": "FINISHED"
+    }
+  ],
+  "name": "Save to Data Lake (BigQuery)",
+  "id": "2HBHQ8AFQ",
+  "defaultInterpreterGroup": "spark",
+  "version": "0.9.1-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false
+  },
+  "info": {
+    "isRunning": false
+  }
+}

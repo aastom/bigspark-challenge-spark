@@ -48,7 +48,7 @@ resource "google_dataproc_cluster" "bigspark-cluster" {
     }
 
     worker_config {
-      num_instances = 2
+      num_instances = var.num_instances
       machine_type  = var.machine_type
       disk_config {
         boot_disk_size_gb = 30
@@ -64,10 +64,9 @@ resource "google_dataproc_cluster" "bigspark-cluster" {
       override_properties = {
         "dataproc:dataproc.allow.zero.workers" = "true"
         "zeppelin:zeppelin.notebook.gcs.dir"   = "gs://${var.zeppelin_bucket}/notebooks"
+        "spark:spark.jars.packages"            = "com.google.cloud.spark:spark-3.1-bigquery:0.26.0-preview"
       }
       optional_components = var.additional_components
     }
-
-
   }
 }

@@ -62,4 +62,9 @@ variable "additional_components" {
   description = "Additional Components like Zeppelin, Hive etc."
 }
 
+variable "num_instances" {
+  type        = number
+  description = "The number of instances in the cluster"
+}
+
 

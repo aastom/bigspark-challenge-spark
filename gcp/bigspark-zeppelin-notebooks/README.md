@@ -1,1 +1,0 @@
-# bigspark-challange-zeppelin-notebooks

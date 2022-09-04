@@ -2,9 +2,9 @@
   "paragraphs": [
     {
       "title": "Imports",
-      "text": "%spark\n\nimport spark.implicits._\nimport org.apache.spark.sql.functions._\nimport org.apache.spark.sql.types.{IntegerType, StringType, DoubleType, DateType, StructType}\n\n// val pathToData : String  \u003d \"/usr/local/tpcds_data\"\nval pathToData : String  \u003d \"s3a://bigspark.challenge.data/tpcds_data_5g\"",
+      "text": "%spark\n\nimport spark.implicits._\nimport org.apache.spark.sql.functions._\nimport org.apache.spark.sql.types.{IntegerType, StringType, DoubleType, DateType, StructType}\n\nval pathToData : String  \u003d \"s3a://bigspark.challenge.data/tpcds_data_5g\"\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:40.746",
+      "dateUpdated": "2022-09-04 13:33:26.536",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -17,7 +17,7 @@
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "fontSize": 9.0,
-        "editorHide": false,
+        "editorHide": true,
         "title": true,
         "results": {},
         "enabled": true
@@ -41,28 +41,29 @@
       "jobName": "paragraph_1661373339182_2016464202",
       "id": "paragraph_1661373339182_2016464202",
       "dateCreated": "2022-08-24 20:35:39.182",
-      "dateStarted": "2022-08-29 11:54:40.981",
-      "dateFinished": "2022-08-29 11:54:42.171",
+      "dateStarted": "2022-09-04 13:33:26.841",
+      "dateFinished": "2022-09-04 13:34:14.632",
       "status": "FINISHED"
     },
     {
-      "text": "%spark\n\nspark.sparkContext.hadoopConfiguration.set(\"fs.s3a.access.key\", \"AKIA2533TSC3B63EISVV\")\nspark.sparkContext.hadoopConfiguration.set(\"fs.s3a.secret.key\", \"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\")",
+      "text": "%spark\n\nsc.hadoopConfiguration.set(\"fs.s3a.access.key\", \"AKIA2533TSC3B63EISVV\")\nsc.hadoopConfiguration.set(\"fs.s3a.secret.key\", \"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\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:42.180",
+      "dateUpdated": "2022-09-04 13:34:14.734",
       "progress": 0,
       "config": {
+        "tableHide": true,
         "editorSetting": {
-          "language": "scala",
-          "editOnDblClick": false,
           "completionKey": "TAB",
-          "completionSupport": true
+          "editOnDblClick": false,
+          "completionSupport": true,
+          "language": "scala"
         },
         "colWidth": 12.0,
         "editorMode": "ace/mode/scala",
         "fontSize": 9.0,
+        "editorHide": true,
         "results": {},
-        "enabled": true,
-        "editorHide": true
+        "enabled": true
       },
       "settings": {
         "params": {},
@@ -75,18 +76,18 @@
       "apps": [],
       "runtimeInfos": {},
       "progressUpdateIntervalMs": 500,
-      "jobName": "paragraph_1661760344567_1465406551",
-      "id": "paragraph_1661760344567_1465406551",
-      "dateCreated": "2022-08-29 08:05:44.567",
-      "dateStarted": "2022-08-29 11:54:42.541",
-      "dateFinished": "2022-08-29 11:54:42.818",
+      "jobName": "paragraph_1662288527960_743985999",
+      "id": "paragraph_1662288527960_743985999",
+      "dateCreated": "2022-09-04 10:48:47.960",
+      "dateStarted": "2022-09-04 13:34:15.071",
+      "dateFinished": "2022-09-04 13:34:16.146",
       "status": "FINISHED"
     },
     {
       "title": "Call Center ",
-      "text": "%spark\n\n// Create schema when reading /usr/local/tpcds_data/call_center.dat\nval callCenterSchema \u003d new StructType()\n    .add(\"cc_call_center_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_call_center_id\", StringType, nullable \u003d true)\n    .add(\"cc_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"cc_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"cc_closed_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_open_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_name\", StringType, nullable \u003d true)\n    .add(\"cc_class\", StringType, nullable \u003d true)\n    .add(\"cc_employees\", IntegerType, nullable \u003d true)\n    .add(\"cc_sq_ft\", IntegerType, nullable \u003d true)\n    .add(\"cc_hours\", StringType, nullable \u003d true)\n    .add(\"cc_manager\", StringType, nullable \u003d true)\n    .add(\"cc_mkt_id\", IntegerType, nullable \u003d true)\n    .add(\"cc_mkt_class\", StringType, nullable \u003d true)\n    .add(\"cc_mkt_desc\", StringType, nullable \u003d true)\n    .add(\"cc_market_manager\", StringType, nullable \u003d true)\n    .add(\"cc_division\", IntegerType, nullable \u003d true)\n    .add(\"cc_division_name\", StringType, nullable \u003d true)\n    .add(\"cc_company\", IntegerType, nullable \u003d true)\n    .add(\"cc_company_name\", StringType, nullable \u003d true)\n    .add(\"cc_street_number\", StringType, nullable \u003d true)\n    .add(\"cc_street_name\", StringType, nullable \u003d true)\n    .add(\"cc_street_type\", StringType, nullable \u003d true)\n    .add(\"cc_suite_number\", StringType, nullable \u003d true)\n    .add(\"cc_city\", StringType, nullable \u003d true)\n    .add(\"cc_county\", StringType, nullable \u003d true)\n    .add(\"cc_state\", StringType, nullable \u003d true)\n    .add(\"cc_zip\", StringType, nullable \u003d true)\n    .add(\"cc_country\", StringType, nullable \u003d true)\n    .add(\"cc_gmt_offset\", DoubleType, nullable \u003d true)\n    .add(\"cc_tax_percentage\", DoubleType, nullable \u003d true)\n\nval callCenterDF \u003d spark.read\n  .schema(callCenterSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/call_center.dat\")\n\ncallCenterDF.registerTempTable(\"call_center\")",
+      "text": "%spark\n\n// Create schema when reading /usr/local/tpcds_data/call_center.dat\nval callCenterSchema \u003d new StructType()\n    .add(\"cc_call_center_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_call_center_id\", StringType, nullable \u003d true)\n    .add(\"cc_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"cc_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"cc_closed_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_open_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cc_name\", StringType, nullable \u003d true)\n    .add(\"cc_class\", StringType, nullable \u003d true)\n    .add(\"cc_employees\", IntegerType, nullable \u003d true)\n    .add(\"cc_sq_ft\", IntegerType, nullable \u003d true)\n    .add(\"cc_hours\", StringType, nullable \u003d true)\n    .add(\"cc_manager\", StringType, nullable \u003d true)\n    .add(\"cc_mkt_id\", IntegerType, nullable \u003d true)\n    .add(\"cc_mkt_class\", StringType, nullable \u003d true)\n    .add(\"cc_mkt_desc\", StringType, nullable \u003d true)\n    .add(\"cc_market_manager\", StringType, nullable \u003d true)\n    .add(\"cc_division\", IntegerType, nullable \u003d true)\n    .add(\"cc_division_name\", StringType, nullable \u003d true)\n    .add(\"cc_company\", IntegerType, nullable \u003d true)\n    .add(\"cc_company_name\", StringType, nullable \u003d true)\n    .add(\"cc_street_number\", StringType, nullable \u003d true)\n    .add(\"cc_street_name\", StringType, nullable \u003d true)\n    .add(\"cc_street_type\", StringType, nullable \u003d true)\n    .add(\"cc_suite_number\", StringType, nullable \u003d true)\n    .add(\"cc_city\", StringType, nullable \u003d true)\n    .add(\"cc_county\", StringType, nullable \u003d true)\n    .add(\"cc_state\", StringType, nullable \u003d true)\n    .add(\"cc_zip\", StringType, nullable \u003d true)\n    .add(\"cc_country\", StringType, nullable \u003d true)\n    .add(\"cc_gmt_offset\", DoubleType, nullable \u003d true)\n    .add(\"cc_tax_percentage\", DoubleType, nullable \u003d true)\n\nval callCenterDF \u003d spark.read\n  .option(\"sep\", \"|\")\n  .schema(callCenterSchema)\n  .csv(s\"$pathToData/call_center.dat\")\n  \ncallCenterDF.createOrReplaceTempView(\"call_center\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:42.836",
+      "dateUpdated": "2022-09-04 13:34:16.163",
       "progress": 0,
       "config": {
         "editorSetting": {
@@ -121,7 +122,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcallCenterSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cc_call_center_sk,IntegerType,true), StructField(cc_call_center_id,StringType,true), StructField(cc_rec_start_date,StringType,true), StructField(cc_rec_end_date,StringType,true), StructField(cc_closed_date_sk,IntegerType,true), StructField(cc_open_date_sk,IntegerType,true), StructField(cc_name,StringType,true), StructField(cc_class,StringType,true), StructField(cc_employees,IntegerType,true), StructField(cc_sq_ft,IntegerType,true), StructField(cc_hours,StringType,true), StructField(cc_manager,StringType,true), StructField(cc_mkt_id,IntegerType,true), StructField(cc_mkt_class,StringType,true), StructField(cc_mkt_desc,StringType,true), StructField(cc_market_manager,StringType,true), ...\n"
+            "data": "\u001b[1m\u001b[34mcallCenterSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cc_call_center_sk,IntegerType,true), StructField(cc_call_center_id,StringType,true), StructField(cc_rec_start_date,StringType,true), StructField(cc_rec_end_date,StringType,true), StructField(cc_closed_date_sk,IntegerType,true), StructField(cc_open_date_sk,IntegerType,true), StructField(cc_name,StringType,true), StructField(cc_class,StringType,true), StructField(cc_employees,IntegerType,true), StructField(cc_sq_ft,IntegerType,true), StructField(cc_hours,StringType,true), StructField(cc_manager,StringType,true), StructField(cc_mkt_id,IntegerType,true), StructField(cc_mkt_class,StringType,true), StructField(cc_mkt_desc,StringType,true), StructField(cc_market_manager,StringType,true), ...\n"
           }
         ]
       },
@@ -131,15 +132,15 @@
       "jobName": "paragraph_1661368285047_1757806674",
       "id": "paragraph_1661368285047_1757806674",
       "dateCreated": "2022-08-24 19:11:25.047",
-      "dateStarted": "2022-08-29 11:54:43.726",
-      "dateFinished": "2022-08-29 11:54:44.856",
+      "dateStarted": "2022-09-04 13:34:16.425",
+      "dateFinished": "2022-09-04 13:34:25.008",
       "status": "FINISHED"
     },
     {
       "title": "Catalog Page ",
-      "text": "%spark\n\nval catalogPageSchema \u003d new StructType()\n    .add(\"cp_catalog_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_catalog_page_id\", StringType, nullable \u003d true)\n    .add(\"cp_start_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_end_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_department\", StringType, nullable \u003d true)\n    .add(\"cp_catalog_number\", IntegerType, nullable \u003d true)\n    .add(\"cp_catalog_page_number\", IntegerType, nullable \u003d true)\n    .add(\"cp_description\", StringType, nullable \u003d true)\n    .add(\"cp_type\", StringType, nullable \u003d true)\n\nval catalogPageDF \u003d spark.read\n  .schema(catalogPageSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_page.dat\")\n\ncatalogPageDF.registerTempTable(\"catalog_page\")",
+      "text": "%spark\n\nval catalogPageSchema \u003d new StructType()\n    .add(\"cp_catalog_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_catalog_page_id\", StringType, nullable \u003d true)\n    .add(\"cp_start_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_end_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cp_department\", StringType, nullable \u003d true)\n    .add(\"cp_catalog_number\", IntegerType, nullable \u003d true)\n    .add(\"cp_catalog_page_number\", IntegerType, nullable \u003d true)\n    .add(\"cp_description\", StringType, nullable \u003d true)\n    .add(\"cp_type\", StringType, nullable \u003d true)\n\nval catalogPageDF \u003d spark.read\n  .schema(catalogPageSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_page.dat\")\n\ncatalogPageDF.createOrReplaceTempView(\"catalog_page\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:44.926",
+      "dateUpdated": "2022-09-04 13:34:25.039",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -224,7 +225,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcatalogPageSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cp_catalog_page_sk,IntegerType,true), StructField(cp_catalog_page_id,StringType,true), StructField(cp_start_date_sk,IntegerType,true), StructField(cp_end_date_sk,IntegerType,true), StructField(cp_department,StringType,true), StructField(cp_catalog_number,IntegerType,true), StructField(cp_catalog_page_number,IntegerType,true), StructField(cp_description,StringType,true), StructField(cp_type,StringType,true))\n\u001b[1m\u001b[34mcatalogPageDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [cp_catalog_page_sk: int, cp_catalog_page_id: string ... 7 more fields]\n"
+            "data": "\u001b[1m\u001b[34mcatalogPageSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cp_catalog_page_sk,IntegerType,true), StructField(cp_catalog_page_id,StringType,true), StructField(cp_start_date_sk,IntegerType,true), StructField(cp_end_date_sk,IntegerType,true), StructField(cp_department,StringType,true), StructField(cp_catalog_number,IntegerType,true), StructField(cp_catalog_page_number,IntegerType,true), StructField(cp_description,StringType,true), StructField(cp_type,StringType,true))\n\u001b[1m\u001b[34mcatalogPageDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [cp_catalog_page_sk: int, cp_catalog_page_id: string ... 7 more fields]\n"
           }
         ]
       },
@@ -234,15 +235,15 @@
       "jobName": "paragraph_1661372673567_2039327368",
       "id": "paragraph_1661372673567_2039327368",
       "dateCreated": "2022-08-24 20:24:33.567",
-      "dateStarted": "2022-08-29 11:54:45.232",
-      "dateFinished": "2022-08-29 11:54:45.956",
+      "dateStarted": "2022-09-04 13:34:25.447",
+      "dateFinished": "2022-09-04 13:34:26.994",
       "status": "FINISHED"
     },
     {
       "title": "Catalog Returns ",
-      "text": "%spark\n\nval catalogReturnsSchema \u003d new StructType()\n    .add(\"cr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returned_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_call_center_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_catalog_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_order_number\", IntegerType, nullable \u003d true)\n    .add(\"cr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"cr_return_amount\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"cr_fee\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"cr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"cr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"cr_store_credit\", DoubleType, nullable \u003d true)\n    .add(\"cr_net_loss\", DoubleType, nullable \u003d true)\n    \nval catalogReturnsDF \u003d spark.read\n  .schema(catalogReturnsSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_returns.dat\")\n\ncatalogReturnsDF.registerTempTable(\"catalog_returns\")",
+      "text": "%spark\n\nval catalogReturnsSchema \u003d new StructType()\n    .add(\"cr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returned_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_refunded_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_returning_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_call_center_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_catalog_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"cr_order_number\", IntegerType, nullable \u003d true)\n    .add(\"cr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"cr_return_amount\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"cr_fee\", DoubleType, nullable \u003d true)\n    .add(\"cr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"cr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"cr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"cr_store_credit\", DoubleType, nullable \u003d true)\n    .add(\"cr_net_loss\", DoubleType, nullable \u003d true)\n    \nval catalogReturnsDF \u003d spark.read\n  .schema(catalogReturnsSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_returns.dat\")\n\ncatalogReturnsDF.createOrReplaceTempView(\"catalog_returns\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:46.033",
+      "dateUpdated": "2022-09-04 13:34:27.037",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -336,7 +337,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcatalogReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cr_returned_date_sk,IntegerType,true), StructField(cr_returned_time_sk,IntegerType,true), StructField(cr_item_sk,IntegerType,true), StructField(cr_refunded_customer_sk,IntegerType,true), StructField(cr_refunded_cdemo_sk,IntegerType,true), StructField(cr_refunded_hdemo_sk,IntegerType,true), StructField(cr_refunded_addr_sk,IntegerType,true), StructField(cr_returning_customer_sk,IntegerType,true), StructField(cr_returning_cdemo_sk,IntegerType,true), StructField(cr_returning_hdemo_sk,IntegerType,true), StructField(cr_returning_addr_sk,IntegerType,true), StructField(cr_call_center_sk,IntegerType,true), StructField(cr_catalog_page_sk,IntegerType,true), StructField(cr_ship_mode_sk,Int...\n"
+            "data": "\u001b[1m\u001b[34mcatalogReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cr_returned_date_sk,IntegerType,true), StructField(cr_returned_time_sk,IntegerType,true), StructField(cr_item_sk,IntegerType,true), StructField(cr_refunded_customer_sk,IntegerType,true), StructField(cr_refunded_cdemo_sk,IntegerType,true), StructField(cr_refunded_hdemo_sk,IntegerType,true), StructField(cr_refunded_addr_sk,IntegerType,true), StructField(cr_returning_customer_sk,IntegerType,true), StructField(cr_returning_cdemo_sk,IntegerType,true), StructField(cr_returning_hdemo_sk,IntegerType,true), StructField(cr_returning_addr_sk,IntegerType,true), StructField(cr_call_center_sk,IntegerType,true), StructField(cr_catalog_page_sk,IntegerType,true), StructField(cr_ship_mode_sk,Int...\n"
           }
         ]
       },
@@ -346,15 +347,15 @@
       "jobName": "paragraph_1661372673459_794396095",
       "id": "paragraph_1661372673459_794396095",
       "dateCreated": "2022-08-24 20:24:33.459",
-      "dateStarted": "2022-08-29 11:54:46.317",
-      "dateFinished": "2022-08-29 11:54:47.113",
+      "dateStarted": "2022-09-04 13:34:27.377",
+      "dateFinished": "2022-09-04 13:34:28.447",
       "status": "FINISHED"
     },
     {
       "title": "Catalog Sales ",
-      "text": "%spark\n\nval catalogSalesSchema \u003d new StructType()\n    .add(\"cs_sold_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_sold_time_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_cdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_hdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_addr_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_cdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_hdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_addr_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_call_center_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_catalog_page_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_mode_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_warehouse_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_item_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_promo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_order_number\",IntegerType, nullable \u003d true)\n    .add(\"cs_quantity\",IntegerType, nullable \u003d true)\n    .add(\"cs_wholesale_cost\",IntegerType, nullable \u003d true)\n    .add(\"cs_list_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_sales_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_discount_amt\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_sales_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_wholesale_cost\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_list_price\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_coupon_amt\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_ship_cost\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_ship\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_ship_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_profit\",DoubleType, nullable \u003d true)\n\nval catalogSalesDF \u003d spark.read\n  .schema(catalogSalesSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_sales.dat\")\n\ncatalogSalesDF.registerTempTable(\"catalog_sales\")",
+      "text": "%spark\n\nval catalogSalesSchema \u003d new StructType()\n    .add(\"cs_sold_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_sold_time_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_cdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_hdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_bill_addr_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_cdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_hdemo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_addr_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_call_center_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_catalog_page_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_ship_mode_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_warehouse_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_item_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_promo_sk\",IntegerType, nullable \u003d true)\n    .add(\"cs_order_number\",IntegerType, nullable \u003d true)\n    .add(\"cs_quantity\",IntegerType, nullable \u003d true)\n    .add(\"cs_wholesale_cost\",IntegerType, nullable \u003d true)\n    .add(\"cs_list_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_sales_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_discount_amt\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_sales_price\",IntegerType, nullable \u003d true)\n    .add(\"cs_ext_wholesale_cost\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_list_price\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_coupon_amt\",DoubleType, nullable \u003d true)\n    .add(\"cs_ext_ship_cost\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_ship\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_paid_inc_ship_tax\",DoubleType, nullable \u003d true)\n    .add(\"cs_net_profit\",DoubleType, nullable \u003d true)\n\nval catalogSalesDF \u003d spark.read\n  .schema(catalogSalesSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/catalog_sales.dat\")\n\ncatalogSalesDF.createOrReplaceTempView(\"catalog_sales\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:47.118",
+      "dateUpdated": "2022-09-04 13:34:28.472",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -435,7 +436,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcatalogSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cs_sold_date_sk,IntegerType,true), StructField(cs_sold_time_sk,IntegerType,true), StructField(cs_ship_date_sk,IntegerType,true), StructField(cs_bill_customer_sk,IntegerType,true), StructField(cs_bill_cdemo_sk,IntegerType,true), StructField(cs_bill_hdemo_sk,IntegerType,true), StructField(cs_bill_addr_sk,IntegerType,true), StructField(cs_ship_customer_sk,IntegerType,true), StructField(cs_ship_cdemo_sk,IntegerType,true), StructField(cs_ship_hdemo_sk,IntegerType,true), StructField(cs_ship_addr_sk,IntegerType,true), StructField(cs_call_center_sk,IntegerType,true), StructField(cs_catalog_page_sk,IntegerType,true), StructField(cs_ship_mode_sk,IntegerType,true), StructField(cs_warehouse_...\n"
+            "data": "\u001b[1m\u001b[34mcatalogSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cs_sold_date_sk,IntegerType,true), StructField(cs_sold_time_sk,IntegerType,true), StructField(cs_ship_date_sk,IntegerType,true), StructField(cs_bill_customer_sk,IntegerType,true), StructField(cs_bill_cdemo_sk,IntegerType,true), StructField(cs_bill_hdemo_sk,IntegerType,true), StructField(cs_bill_addr_sk,IntegerType,true), StructField(cs_ship_customer_sk,IntegerType,true), StructField(cs_ship_cdemo_sk,IntegerType,true), StructField(cs_ship_hdemo_sk,IntegerType,true), StructField(cs_ship_addr_sk,IntegerType,true), StructField(cs_call_center_sk,IntegerType,true), StructField(cs_catalog_page_sk,IntegerType,true), StructField(cs_ship_mode_sk,IntegerType,true), StructField(cs_warehouse_...\n"
           }
         ]
       },
@@ -445,15 +446,15 @@
       "jobName": "paragraph_1661374321086_302368972",
       "id": "paragraph_1661374321086_302368972",
       "dateCreated": "2022-08-24 20:52:01.086",
-      "dateStarted": "2022-08-29 11:54:47.343",
-      "dateFinished": "2022-08-29 11:54:48.135",
+      "dateStarted": "2022-09-04 13:34:29.256",
+      "dateFinished": "2022-09-04 13:34:30.317",
       "status": "FINISHED"
     },
     {
       "title": "Customer ",
-      "text": "%spark\n\nval customerSchema \u003d new StructType()\n    .add(\"c_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_customer_id\", StringType, nullable \u003d true)\n    .add(\"c_current_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_current_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_current_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_first_shipto_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_first_sales_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_salutation\", StringType, nullable \u003d true)\n    .add(\"c_first_name\", StringType, nullable \u003d true)\n    .add(\"c_last_name\", StringType, nullable \u003d true)\n    .add(\"c_preferred_cust_flag\", StringType, nullable \u003d true)\n    .add(\"c_birth_day\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_month\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_year\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_country\", StringType, nullable \u003d true)\n    .add(\"c_login\", StringType, nullable \u003d true)\n    .add(\"c_email_address\", StringType, nullable \u003d true)\n    .add(\"c_last_review_date\", StringType, nullable \u003d true)\n\nval customerDF \u003d spark.read\n  .schema(customerSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/customer.dat\")\n\ncustomerDF.registerTempTable(\"customer\")\n",
+      "text": "%spark\n\nval customerSchema \u003d new StructType()\n    .add(\"c_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_customer_id\", StringType, nullable \u003d true)\n    .add(\"c_current_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_current_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_current_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_first_shipto_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_first_sales_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"c_salutation\", StringType, nullable \u003d true)\n    .add(\"c_first_name\", StringType, nullable \u003d true)\n    .add(\"c_last_name\", StringType, nullable \u003d true)\n    .add(\"c_preferred_cust_flag\", StringType, nullable \u003d true)\n    .add(\"c_birth_day\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_month\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_year\", IntegerType, nullable \u003d true)\n    .add(\"c_birth_country\", StringType, nullable \u003d true)\n    .add(\"c_login\", StringType, nullable \u003d true)\n    .add(\"c_email_address\", StringType, nullable \u003d true)\n    .add(\"c_last_review_date\", StringType, nullable \u003d true)\n\nval customerDF \u003d spark.read\n  .schema(customerSchema)\n  .option(\"sep\", \"|\")\n  .csv(s\"$pathToData/customer.dat\")\n\ncustomerDF.createOrReplaceTempView(\"customer\")\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:48.143",
+      "dateUpdated": "2022-09-04 13:34:30.357",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -541,7 +542,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcustomerSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(c_customer_sk,IntegerType,true), StructField(c_customer_id,StringType,true), StructField(c_current_cdemo_sk,IntegerType,true), StructField(c_current_hdemo_sk,IntegerType,true), StructField(c_current_addr_sk,IntegerType,true), StructField(c_first_shipto_date_sk,IntegerType,true), StructField(c_first_sales_date_sk,IntegerType,true), StructField(c_salutation,StringType,true), StructField(c_first_name,StringType,true), StructField(c_last_name,StringType,true), StructField(c_preferred_cust_flag,StringType,true), StructField(c_birth_day,IntegerType,true), StructField(c_birth_month,IntegerType,true), StructField(c_birth_year,IntegerType,true), StructField(c_birth_country,StringType,true), S...\n"
+            "data": "\u001b[1m\u001b[34mcustomerSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(c_customer_sk,IntegerType,true), StructField(c_customer_id,StringType,true), StructField(c_current_cdemo_sk,IntegerType,true), StructField(c_current_hdemo_sk,IntegerType,true), StructField(c_current_addr_sk,IntegerType,true), StructField(c_first_shipto_date_sk,IntegerType,true), StructField(c_first_sales_date_sk,IntegerType,true), StructField(c_salutation,StringType,true), StructField(c_first_name,StringType,true), StructField(c_last_name,StringType,true), StructField(c_preferred_cust_flag,StringType,true), StructField(c_birth_day,IntegerType,true), StructField(c_birth_month,IntegerType,true), StructField(c_birth_year,IntegerType,true), StructField(c_birth_country,StringType,true), S...\n"
           }
         ]
       },
@@ -551,15 +552,15 @@
       "jobName": "paragraph_1661376196359_1303493297",
       "id": "paragraph_1661376196359_1303493297",
       "dateCreated": "2022-08-24 21:23:16.359",
-      "dateStarted": "2022-08-29 11:54:48.357",
-      "dateFinished": "2022-08-29 11:54:49.034",
+      "dateStarted": "2022-09-04 13:34:35.333",
+      "dateFinished": "2022-09-04 13:34:36.230",
       "status": "FINISHED"
     },
     {
       "title": "Customer Address ",
-      "text": "%spark\n\nval customerAddressSchema \u003d new StructType()\n.add(\"ca_address_sk\",IntegerType, nullable\u003d true)\n.add(\"ca_address_id\",StringType, nullable\u003d true)\n.add(\"ca_street_number\",StringType, nullable\u003d true)\n.add(\"ca_street_name\",StringType, nullable\u003d true)\n.add(\"ca_street_type\",StringType, nullable\u003d true)\n.add(\"ca_suite_number\",StringType, nullable\u003d true)\n.add(\"ca_city\",StringType, nullable\u003d true)\n.add(\"ca_county\",StringType, nullable\u003d true)\n.add(\"ca_state\",StringType, nullable\u003d true)\n.add(\"ca_zip\",StringType, nullable\u003d true)\n.add(\"ca_country\",StringType, nullable\u003d true)\n.add(\"ca_gmt_offset\",StringType, nullable\u003d true)\n.add(\"ca_location_type\",StringType, nullable\u003d true)\n\nval customerAddressDF \u003d spark.read.schema(customerAddressSchema).option(\"sep\",\"|\").csv(s\"$pathToData/customer_address.dat\")\ncustomerAddressDF.registerTempTable(\"customer_address\")",
+      "text": "%spark\n\nval customerAddressSchema \u003d new StructType()\n.add(\"ca_address_sk\",IntegerType, nullable\u003d true)\n.add(\"ca_address_id\",StringType, nullable\u003d true)\n.add(\"ca_street_number\",StringType, nullable\u003d true)\n.add(\"ca_street_name\",StringType, nullable\u003d true)\n.add(\"ca_street_type\",StringType, nullable\u003d true)\n.add(\"ca_suite_number\",StringType, nullable\u003d true)\n.add(\"ca_city\",StringType, nullable\u003d true)\n.add(\"ca_county\",StringType, nullable\u003d true)\n.add(\"ca_state\",StringType, nullable\u003d true)\n.add(\"ca_zip\",StringType, nullable\u003d true)\n.add(\"ca_country\",StringType, nullable\u003d true)\n.add(\"ca_gmt_offset\",StringType, nullable\u003d true)\n.add(\"ca_location_type\",StringType, nullable\u003d true)\n\nval customerAddressDF \u003d spark.read.schema(customerAddressSchema).option(\"sep\",\"|\").csv(s\"$pathToData/customer_address.dat\")\ncustomerAddressDF.createOrReplaceTempView(\"customer_address\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:49.058",
+      "dateUpdated": "2022-09-04 13:34:36.241",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -631,7 +632,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcustomerAddressSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ca_address_sk,IntegerType,true), StructField(ca_address_id,StringType,true), StructField(ca_street_number,StringType,true), StructField(ca_street_name,StringType,true), StructField(ca_street_type,StringType,true), StructField(ca_suite_number,StringType,true), StructField(ca_city,StringType,true), StructField(ca_county,StringType,true), StructField(ca_state,StringType,true), StructField(ca_zip,StringType,true), StructField(ca_country,StringType,true), StructField(ca_gmt_offset,StringType,true), StructField(ca_location_type,StringType,true))\n\u001b[1m\u001b[34mcustomerAddressDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [ca_address_sk: int, ca_address_id: string ... 11 more fields]\n"
+            "data": "\u001b[1m\u001b[34mcustomerAddressSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ca_address_sk,IntegerType,true), StructField(ca_address_id,StringType,true), StructField(ca_street_number,StringType,true), StructField(ca_street_name,StringType,true), StructField(ca_street_type,StringType,true), StructField(ca_suite_number,StringType,true), StructField(ca_city,StringType,true), StructField(ca_county,StringType,true), StructField(ca_state,StringType,true), StructField(ca_zip,StringType,true), StructField(ca_country,StringType,true), StructField(ca_gmt_offset,StringType,true), StructField(ca_location_type,StringType,true))\n\u001b[1m\u001b[34mcustomerAddressDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [ca_address_sk: int, ca_address_id: string ... 11 more fields]\n"
           }
         ]
       },
@@ -641,15 +642,15 @@
       "jobName": "paragraph_1661376936006_1040148328",
       "id": "paragraph_1661376936006_1040148328",
       "dateCreated": "2022-08-24 21:35:36.006",
-      "dateStarted": "2022-08-29 11:54:49.821",
-      "dateFinished": "2022-08-29 11:54:50.529",
+      "dateStarted": "2022-09-04 13:34:36.613",
+      "dateFinished": "2022-09-04 13:34:37.389",
       "status": "FINISHED"
     },
     {
       "title": "Customer Demographics",
-      "text": "%spark\n\nval customerDemographicsSchema \u003d new StructType()\n    .add(\"cd_demo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cd_gender\", StringType, nullable \u003d true)\n    .add(\"cd_marital_status\", StringType, nullable \u003d true)\n    .add(\"cd_education_status\", StringType, nullable \u003d true)\n    .add(\"cd_purchase_estimate\", IntegerType, nullable \u003d true)\n    .add(\"cd_credit_rating\", StringType, nullable \u003d true)\n    .add(\"cd_dep_count\", IntegerType, nullable \u003d true)\n    .add(\"cd_dep_employed_count\", IntegerType, nullable \u003d true)\n    .add(\"cd_dep_college_count\", IntegerType, nullable \u003d true)\n\nval customerDemographicsDF \u003d spark.read.schema(customerDemographicsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/customer_demographics.dat\")\ncustomerDemographicsDF.registerTempTable(\"customer_demographics\")\n",
+      "text": "%spark\n\nval customerDemographicsSchema \u003d new StructType()\n    .add(\"cd_demo_sk\", IntegerType, nullable \u003d true)\n    .add(\"cd_gender\", StringType, nullable \u003d true)\n    .add(\"cd_marital_status\", StringType, nullable \u003d true)\n    .add(\"cd_education_status\", StringType, nullable \u003d true)\n    .add(\"cd_purchase_estimate\", IntegerType, nullable \u003d true)\n    .add(\"cd_credit_rating\", StringType, nullable \u003d true)\n    .add(\"cd_dep_count\", IntegerType, nullable \u003d true)\n    .add(\"cd_dep_employed_count\", IntegerType, nullable \u003d true)\n    .add(\"cd_dep_college_count\", IntegerType, nullable \u003d true)\n\nval customerDemographicsDF \u003d spark.read.schema(customerDemographicsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/customer_demographics.dat\")\ncustomerDemographicsDF.createOrReplaceTempView(\"customer_demographics\")\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:50.622",
+      "dateUpdated": "2022-09-04 13:34:37.414",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -716,7 +717,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mcustomerDemographicsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cd_demo_sk,IntegerType,true), StructField(cd_gender,StringType,true), StructField(cd_marital_status,StringType,true), StructField(cd_education_status,StringType,true), StructField(cd_purchase_estimate,IntegerType,true), StructField(cd_credit_rating,StringType,true), StructField(cd_dep_count,IntegerType,true), StructField(cd_dep_employed_count,IntegerType,true), StructField(cd_dep_college_count,IntegerType,true))\n\u001b[1m\u001b[34mcustomerDemographicsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [cd_demo_sk: int, cd_gender: string ... 7 more fields]\n"
+            "data": "\u001b[1m\u001b[34mcustomerDemographicsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(cd_demo_sk,IntegerType,true), StructField(cd_gender,StringType,true), StructField(cd_marital_status,StringType,true), StructField(cd_education_status,StringType,true), StructField(cd_purchase_estimate,IntegerType,true), StructField(cd_credit_rating,StringType,true), StructField(cd_dep_count,IntegerType,true), StructField(cd_dep_employed_count,IntegerType,true), StructField(cd_dep_college_count,IntegerType,true))\n\u001b[1m\u001b[34mcustomerDemographicsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [cd_demo_sk: int, cd_gender: string ... 7 more fields]\n"
           }
         ]
       },
@@ -726,15 +727,15 @@
       "jobName": "paragraph_1661377409804_227799012",
       "id": "paragraph_1661377409804_227799012",
       "dateCreated": "2022-08-24 21:43:29.804",
-      "dateStarted": "2022-08-29 11:54:50.880",
-      "dateFinished": "2022-08-29 11:54:51.536",
+      "dateStarted": "2022-09-04 13:34:37.750",
+      "dateFinished": "2022-09-04 13:34:38.531",
       "status": "FINISHED"
     },
     {
       "title": "Date Dim",
-      "text": "%spark\n\nval dateDimSchema \u003d new StructType()\n    .add(\"d_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"d_date_id\", StringType, nullable \u003d true)\n    .add(\"d_date\", DateType, nullable \u003d true)\n    .add(\"d_month_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_week_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_quarter_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_year\", IntegerType, nullable \u003d true)\n    .add(\"d_dow\", IntegerType, nullable \u003d true)\n    .add(\"d_moy\", IntegerType, nullable \u003d true)\n    .add(\"d_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_qoy\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_year\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_quarter_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_week_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_day_name\", StringType, nullable \u003d true)\n    .add(\"d_quarter_name\", StringType, nullable \u003d true)\n    .add(\"d_holiday\", StringType, nullable \u003d true)\n    .add(\"d_weekend\", StringType, nullable \u003d true)\n    .add(\"d_following_holiday\", StringType, nullable \u003d true)\n    .add(\"d_first_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_last_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_same_day_ly\", IntegerType, nullable \u003d true)\n    .add(\"d_same_day_lq\", IntegerType, nullable \u003d true)\n    .add(\"d_current_day\", StringType, nullable \u003d true)\n    .add(\"d_current_week\", StringType, nullable \u003d true)\n    .add(\"d_current_month\", StringType, nullable \u003d true)\n    .add(\"d_current_quarter\", StringType, nullable \u003d true)\n    .add(\"d_current_year\", StringType, nullable \u003d true)\n    \nval dateDimDF \u003d spark.read.schema(dateDimSchema).option(\"sep\",\"|\").csv(s\"$pathToData/date_dim.dat\")\ndateDimDF.registerTempTable(\"date_dim\")",
+      "text": "%spark\n\nval dateDimSchema \u003d new StructType()\n    .add(\"d_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"d_date_id\", StringType, nullable \u003d true)\n    .add(\"d_date\", DateType, nullable \u003d true)\n    .add(\"d_month_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_week_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_quarter_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_year\", IntegerType, nullable \u003d true)\n    .add(\"d_dow\", IntegerType, nullable \u003d true)\n    .add(\"d_moy\", IntegerType, nullable \u003d true)\n    .add(\"d_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_qoy\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_year\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_quarter_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_fy_week_seq\", IntegerType, nullable \u003d true)\n    .add(\"d_day_name\", StringType, nullable \u003d true)\n    .add(\"d_quarter_name\", StringType, nullable \u003d true)\n    .add(\"d_holiday\", StringType, nullable \u003d true)\n    .add(\"d_weekend\", StringType, nullable \u003d true)\n    .add(\"d_following_holiday\", StringType, nullable \u003d true)\n    .add(\"d_first_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_last_dom\", IntegerType, nullable \u003d true)\n    .add(\"d_same_day_ly\", IntegerType, nullable \u003d true)\n    .add(\"d_same_day_lq\", IntegerType, nullable \u003d true)\n    .add(\"d_current_day\", StringType, nullable \u003d true)\n    .add(\"d_current_week\", StringType, nullable \u003d true)\n    .add(\"d_current_month\", StringType, nullable \u003d true)\n    .add(\"d_current_quarter\", StringType, nullable \u003d true)\n    .add(\"d_current_year\", StringType, nullable \u003d true)\n    \nval dateDimDF \u003d spark.read.schema(dateDimSchema).option(\"sep\",\"|\").csv(s\"$pathToData/date_dim.dat\")\ndateDimDF.createOrReplaceTempView(\"date_dim\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:51.580",
+      "dateUpdated": "2022-09-04 13:34:38.536",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -797,7 +798,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mdateDimSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(d_date_sk,IntegerType,true), StructField(d_date_id,StringType,true), StructField(d_date,DateType,true), StructField(d_month_seq,IntegerType,true), StructField(d_week_seq,IntegerType,true), StructField(d_quarter_seq,IntegerType,true), StructField(d_year,IntegerType,true), StructField(d_dow,IntegerType,true), StructField(d_moy,IntegerType,true), StructField(d_dom,IntegerType,true), StructField(d_qoy,IntegerType,true), StructField(d_fy_year,IntegerType,true), StructField(d_fy_quarter_seq,IntegerType,true), StructField(d_fy_week_seq,IntegerType,true), StructField(d_day_name,StringType,true), StructField(d_quarter_name,StringType,true), StructField(d_holiday,StringType,true), StructField(d...\n"
+            "data": "\u001b[1m\u001b[34mdateDimSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(d_date_sk,IntegerType,true), StructField(d_date_id,StringType,true), StructField(d_date,DateType,true), StructField(d_month_seq,IntegerType,true), StructField(d_week_seq,IntegerType,true), StructField(d_quarter_seq,IntegerType,true), StructField(d_year,IntegerType,true), StructField(d_dow,IntegerType,true), StructField(d_moy,IntegerType,true), StructField(d_dom,IntegerType,true), StructField(d_qoy,IntegerType,true), StructField(d_fy_year,IntegerType,true), StructField(d_fy_quarter_seq,IntegerType,true), StructField(d_fy_week_seq,IntegerType,true), StructField(d_day_name,StringType,true), StructField(d_quarter_name,StringType,true), StructField(d_holiday,StringType,true), StructField(d...\n"
           }
         ]
       },
@@ -807,15 +808,15 @@
       "jobName": "paragraph_1661380411396_1450486904",
       "id": "paragraph_1661380411396_1450486904",
       "dateCreated": "2022-08-24 22:33:31.396",
-      "dateStarted": "2022-08-29 11:54:51.811",
-      "dateFinished": "2022-08-29 11:54:52.555",
+      "dateStarted": "2022-09-04 13:34:38.904",
+      "dateFinished": "2022-09-04 13:34:39.967",
       "status": "FINISHED"
     },
     {
       "title": "Household Demographics",
-      "text": "%spark\n\nval householdDemographicsSchema \u003d new StructType()\n    .add(\"hd_demo_sk\", IntegerType, nullable \u003d true)\n    .add(\"hd_income_band_sk\", IntegerType, nullable \u003d true)\n    .add(\"hd_buy_potential\", StringType, nullable \u003d true)\n    .add(\"hd_dep_count\", IntegerType, nullable \u003d true)\n    .add(\"hd_vehicle_count\", IntegerType, nullable \u003d true)\n    \nval householdDemographicsDF \u003d  spark.read.schema(householdDemographicsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/household_demographics.dat\")\nhouseholdDemographicsDF.registerTempTable(\"household_demographics\")\n",
+      "text": "%spark\n\nval householdDemographicsSchema \u003d new StructType()\n    .add(\"hd_demo_sk\", IntegerType, nullable \u003d true)\n    .add(\"hd_income_band_sk\", IntegerType, nullable \u003d true)\n    .add(\"hd_buy_potential\", StringType, nullable \u003d true)\n    .add(\"hd_dep_count\", IntegerType, nullable \u003d true)\n    .add(\"hd_vehicle_count\", IntegerType, nullable \u003d true)\n    \nval householdDemographicsDF \u003d  spark.read.schema(householdDemographicsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/household_demographics.dat\")\nhouseholdDemographicsDF.createOrReplaceTempView(\"household_demographics\")\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:52.611",
+      "dateUpdated": "2022-09-04 13:34:39.999",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -842,7 +843,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mhouseholdDemographicsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(hd_demo_sk,IntegerType,true), StructField(hd_income_band_sk,IntegerType,true), StructField(hd_buy_potential,StringType,true), StructField(hd_dep_count,IntegerType,true), StructField(hd_vehicle_count,IntegerType,true))\n\u001b[1m\u001b[34mhouseholdDemographicsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [hd_demo_sk: int, hd_income_band_sk: int ... 3 more fields]\n"
+            "data": "\u001b[1m\u001b[34mhouseholdDemographicsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(hd_demo_sk,IntegerType,true), StructField(hd_income_band_sk,IntegerType,true), StructField(hd_buy_potential,StringType,true), StructField(hd_dep_count,IntegerType,true), StructField(hd_vehicle_count,IntegerType,true))\n\u001b[1m\u001b[34mhouseholdDemographicsDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [hd_demo_sk: int, hd_income_band_sk: int ... 3 more fields]\n"
           }
         ]
       },
@@ -852,15 +853,15 @@
       "jobName": "paragraph_1661382064666_494125339",
       "id": "paragraph_1661382064666_494125339",
       "dateCreated": "2022-08-24 23:01:04.667",
-      "dateStarted": "2022-08-29 11:54:53.475",
-      "dateFinished": "2022-08-29 11:54:54.275",
+      "dateStarted": "2022-09-04 13:34:45.658",
+      "dateFinished": "2022-09-04 13:34:46.774",
       "status": "FINISHED"
     },
     {
       "title": "Income Band",
-      "text": "%spark\n\nval incomeBandSchema \u003d new StructType()\n    .add(\"ib_income_band_sk\",IntegerType, nullable \u003d true)\n    .add(\"ib_lower_bound\",IntegerType, nullable \u003d true)\n    .add(\"ib_upper_bound\",IntegerType, nullable \u003d true)\n\nval incomeBandDF \u003d  spark.read.schema(incomeBandSchema).option(\"sep\",\"|\").csv(s\"$pathToData/income_band.dat\")\nincomeBandDF.registerTempTable(\"income_band\")",
+      "text": "%spark\n\nval incomeBandSchema \u003d new StructType()\n    .add(\"ib_income_band_sk\",IntegerType, nullable \u003d true)\n    .add(\"ib_lower_bound\",IntegerType, nullable \u003d true)\n    .add(\"ib_upper_bound\",IntegerType, nullable \u003d true)\n\nval incomeBandDF \u003d  spark.read.schema(incomeBandSchema).option(\"sep\",\"|\").csv(s\"$pathToData/income_band.dat\")\nincomeBandDF.createOrReplaceTempView(\"income_band\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:54.375",
+      "dateUpdated": "2022-09-04 13:34:46.860",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -887,7 +888,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mincomeBandSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ib_income_band_sk,IntegerType,true), StructField(ib_lower_bound,IntegerType,true), StructField(ib_upper_bound,IntegerType,true))\n\u001b[1m\u001b[34mincomeBandDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [ib_income_band_sk: int, ib_lower_bound: int ... 1 more field]\n"
+            "data": "\u001b[1m\u001b[34mincomeBandSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ib_income_band_sk,IntegerType,true), StructField(ib_lower_bound,IntegerType,true), StructField(ib_upper_bound,IntegerType,true))\n\u001b[1m\u001b[34mincomeBandDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [ib_income_band_sk: int, ib_lower_bound: int ... 1 more field]\n"
           }
         ]
       },
@@ -897,15 +898,15 @@
       "jobName": "paragraph_1661394129574_1489401266",
       "id": "paragraph_1661394129574_1489401266",
       "dateCreated": "2022-08-25 02:22:09.576",
-      "dateStarted": "2022-08-29 11:54:55.925",
-      "dateFinished": "2022-08-29 11:54:56.698",
+      "dateStarted": "2022-09-04 13:34:47.134",
+      "dateFinished": "2022-09-04 13:34:48.294",
       "status": "FINISHED"
     },
     {
       "title": "Inventory",
-      "text": "%spark\n\nval inventorySchema \u003d new StructType()\n    .add(\"inv_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_item_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_warehouse_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_quantity_on_hand\",IntegerType, nullable \u003d true)\n    \nval inventoryDF \u003d  spark.read.schema(inventorySchema).option(\"sep\",\"|\").csv(s\"$pathToData/inventory.dat\")\ninventoryDF.registerTempTable(\"inventory\")",
+      "text": "%spark\n\nval inventorySchema \u003d new StructType()\n    .add(\"inv_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_item_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_warehouse_sk\",IntegerType, nullable \u003d true)\n    .add(\"inv_quantity_on_hand\",IntegerType, nullable \u003d true)\n    \nval inventoryDF \u003d  spark.read.schema(inventorySchema).option(\"sep\",\"|\").csv(s\"$pathToData/inventory.dat\")\ninventoryDF.createOrReplaceTempView(\"inventory\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:56.725",
+      "dateUpdated": "2022-09-04 13:34:48.330",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -932,7 +933,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34minventorySchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(inv_date_sk,IntegerType,true), StructField(inv_item_sk,IntegerType,true), StructField(inv_warehouse_sk,IntegerType,true), StructField(inv_quantity_on_hand,IntegerType,true))\n\u001b[1m\u001b[34minventoryDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [inv_date_sk: int, inv_item_sk: int ... 2 more fields]\n"
+            "data": "\u001b[1m\u001b[34minventorySchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(inv_date_sk,IntegerType,true), StructField(inv_item_sk,IntegerType,true), StructField(inv_warehouse_sk,IntegerType,true), StructField(inv_quantity_on_hand,IntegerType,true))\n\u001b[1m\u001b[34minventoryDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [inv_date_sk: int, inv_item_sk: int ... 2 more fields]\n"
           }
         ]
       },
@@ -942,15 +943,15 @@
       "jobName": "paragraph_1661394681792_1132339068",
       "id": "paragraph_1661394681792_1132339068",
       "dateCreated": "2022-08-25 02:31:21.792",
-      "dateStarted": "2022-08-29 11:54:57.104",
-      "dateFinished": "2022-08-29 11:54:57.734",
+      "dateStarted": "2022-09-04 13:34:49.610",
+      "dateFinished": "2022-09-04 13:34:50.501",
       "status": "FINISHED"
     },
     {
       "title": "Item",
-      "text": "%spark\n\nval itemSchema \u003d new StructType()\n    .add(\"i_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"i_item_id\", StringType, nullable \u003d true)\n    .add(\"i_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"i_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"i_item_desc\", StringType, nullable \u003d true)\n    .add(\"i_current_price\", DoubleType, nullable \u003d true)\n    .add(\"i_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"i_brand_id\", IntegerType, nullable \u003d true)\n    .add(\"i_brand\", StringType, nullable \u003d true)\n    .add(\"i_class_id\", IntegerType, nullable \u003d true)\n    .add(\"i_class\", StringType, nullable \u003d true)\n    .add(\"i_category_id\", IntegerType, nullable \u003d true)\n    .add(\"i_category\", StringType, nullable \u003d true)\n    .add(\"i_manufact_id\", IntegerType, nullable \u003d true)\n    .add(\"i_manufact\", StringType, nullable \u003d true)\n    .add(\"i_size\", StringType, nullable \u003d true)\n    .add(\"i_formulation\", StringType, nullable \u003d true)\n    .add(\"i_color\", StringType, nullable \u003d true)\n    .add(\"i_units\", StringType, nullable \u003d true)\n    .add(\"i_container\", StringType, nullable \u003d true)\n    .add(\"i_manager_id\", IntegerType, nullable \u003d true)\n    .add(\"i_product_name\", StringType, nullable \u003d true)\n    \nval itemDF \u003d  spark.read.schema(itemSchema).option(\"sep\",\"|\").csv(s\"$pathToData/item.dat\")\nitemDF.registerTempTable(\"item\")",
+      "text": "%spark\n\nval itemSchema \u003d new StructType()\n    .add(\"i_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"i_item_id\", StringType, nullable \u003d true)\n    .add(\"i_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"i_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"i_item_desc\", StringType, nullable \u003d true)\n    .add(\"i_current_price\", DoubleType, nullable \u003d true)\n    .add(\"i_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"i_brand_id\", IntegerType, nullable \u003d true)\n    .add(\"i_brand\", StringType, nullable \u003d true)\n    .add(\"i_class_id\", IntegerType, nullable \u003d true)\n    .add(\"i_class\", StringType, nullable \u003d true)\n    .add(\"i_category_id\", IntegerType, nullable \u003d true)\n    .add(\"i_category\", StringType, nullable \u003d true)\n    .add(\"i_manufact_id\", IntegerType, nullable \u003d true)\n    .add(\"i_manufact\", StringType, nullable \u003d true)\n    .add(\"i_size\", StringType, nullable \u003d true)\n    .add(\"i_formulation\", StringType, nullable \u003d true)\n    .add(\"i_color\", StringType, nullable \u003d true)\n    .add(\"i_units\", StringType, nullable \u003d true)\n    .add(\"i_container\", StringType, nullable \u003d true)\n    .add(\"i_manager_id\", IntegerType, nullable \u003d true)\n    .add(\"i_product_name\", StringType, nullable \u003d true)\n    \nval itemDF \u003d  spark.read.schema(itemSchema).option(\"sep\",\"|\").csv(s\"$pathToData/item.dat\")\nitemDF.createOrReplaceTempView(\"item\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:57.804",
+      "dateUpdated": "2022-09-04 13:34:50.510",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -977,7 +978,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mitemSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(i_item_sk,IntegerType,true), StructField(i_item_id,StringType,true), StructField(i_rec_start_date,StringType,true), StructField(i_rec_end_date,StringType,true), StructField(i_item_desc,StringType,true), StructField(i_current_price,DoubleType,true), StructField(i_wholesale_cost,DoubleType,true), StructField(i_brand_id,IntegerType,true), StructField(i_brand,StringType,true), StructField(i_class_id,IntegerType,true), StructField(i_class,StringType,true), StructField(i_category_id,IntegerType,true), StructField(i_category,StringType,true), StructField(i_manufact_id,IntegerType,true), StructField(i_manufact,StringType,true), StructField(i_size,StringType,true), StructField(i_formulation,Strin...\n"
+            "data": "\u001b[1m\u001b[34mitemSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(i_item_sk,IntegerType,true), StructField(i_item_id,StringType,true), StructField(i_rec_start_date,StringType,true), StructField(i_rec_end_date,StringType,true), StructField(i_item_desc,StringType,true), StructField(i_current_price,DoubleType,true), StructField(i_wholesale_cost,DoubleType,true), StructField(i_brand_id,IntegerType,true), StructField(i_brand,StringType,true), StructField(i_class_id,IntegerType,true), StructField(i_class,StringType,true), StructField(i_category_id,IntegerType,true), StructField(i_category,StringType,true), StructField(i_manufact_id,IntegerType,true), StructField(i_manufact,StringType,true), StructField(i_size,StringType,true), StructField(i_formulation,Strin...\n"
           }
         ]
       },
@@ -987,15 +988,15 @@
       "jobName": "paragraph_1661395013115_1586806132",
       "id": "paragraph_1661395013115_1586806132",
       "dateCreated": "2022-08-25 02:36:53.116",
-      "dateStarted": "2022-08-29 11:54:58.033",
-      "dateFinished": "2022-08-29 11:54:58.739",
+      "dateStarted": "2022-09-04 13:34:55.399",
+      "dateFinished": "2022-09-04 13:34:56.431",
       "status": "FINISHED"
     },
     {
       "title": "Promotion",
-      "text": "%spark\n\nval promotionSchema \u003d new StructType()\n    .add(\"p_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_promo_id\", StringType, nullable \u003d true)\n    .add(\"p_start_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_end_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_cost\", DoubleType, nullable \u003d true)\n    .add(\"p_response_target\", IntegerType, nullable \u003d true)\n    .add(\"p_promo_name\", StringType, nullable \u003d true)\n    .add(\"p_channel_dmail\", StringType, nullable \u003d true)\n    .add(\"p_channel_email\", StringType, nullable \u003d true)\n    .add(\"p_channel_catalog\", StringType, nullable \u003d true)\n    .add(\"p_channel_tv\", StringType, nullable \u003d true)\n    .add(\"p_channel_radio\", StringType, nullable \u003d true)\n    .add(\"p_channel_press\", StringType, nullable \u003d true)\n    .add(\"p_channel_event\", StringType, nullable \u003d true)\n    .add(\"p_channel_demo\", StringType, nullable \u003d true)\n    .add(\"p_channel_details\", StringType, nullable \u003d true)\n    .add(\"p_purpose\", StringType, nullable \u003d true)\n\nval promotionDF \u003d spark.read.schema(promotionSchema).option(\"sep\",\"|\").csv(s\"$pathToData/promotion.dat\")\npromotionDF.registerTempTable(\"promotion\")\n",
+      "text": "%spark\n\nval promotionSchema \u003d new StructType()\n    .add(\"p_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_promo_id\", StringType, nullable \u003d true)\n    .add(\"p_start_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_end_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"p_cost\", DoubleType, nullable \u003d true)\n    .add(\"p_response_target\", IntegerType, nullable \u003d true)\n    .add(\"p_promo_name\", StringType, nullable \u003d true)\n    .add(\"p_channel_dmail\", StringType, nullable \u003d true)\n    .add(\"p_channel_email\", StringType, nullable \u003d true)\n    .add(\"p_channel_catalog\", StringType, nullable \u003d true)\n    .add(\"p_channel_tv\", StringType, nullable \u003d true)\n    .add(\"p_channel_radio\", StringType, nullable \u003d true)\n    .add(\"p_channel_press\", StringType, nullable \u003d true)\n    .add(\"p_channel_event\", StringType, nullable \u003d true)\n    .add(\"p_channel_demo\", StringType, nullable \u003d true)\n    .add(\"p_channel_details\", StringType, nullable \u003d true)\n    .add(\"p_purpose\", StringType, nullable \u003d true)\n\nval promotionDF \u003d spark.read.schema(promotionSchema).option(\"sep\",\"|\").csv(s\"$pathToData/promotion.dat\")\npromotionDF.createOrReplaceTempView(\"promotion\")\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:58.833",
+      "dateUpdated": "2022-09-04 13:34:56.500",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1129,7 +1130,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mpromotionSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(p_promo_sk,IntegerType,true), StructField(p_promo_id,StringType,true), StructField(p_start_date_sk,IntegerType,true), StructField(p_end_date_sk,IntegerType,true), StructField(p_item_sk,IntegerType,true), StructField(p_cost,DoubleType,true), StructField(p_response_target,IntegerType,true), StructField(p_promo_name,StringType,true), StructField(p_channel_dmail,StringType,true), StructField(p_channel_email,StringType,true), StructField(p_channel_catalog,StringType,true), StructField(p_channel_tv,StringType,true), StructField(p_channel_radio,StringType,true), StructField(p_channel_press,StringType,true), StructField(p_channel_event,StringType,true), StructField(p_channel_demo,StringType...\n"
+            "data": "\u001b[1m\u001b[34mpromotionSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(p_promo_sk,IntegerType,true), StructField(p_promo_id,StringType,true), StructField(p_start_date_sk,IntegerType,true), StructField(p_end_date_sk,IntegerType,true), StructField(p_item_sk,IntegerType,true), StructField(p_cost,DoubleType,true), StructField(p_response_target,IntegerType,true), StructField(p_promo_name,StringType,true), StructField(p_channel_dmail,StringType,true), StructField(p_channel_email,StringType,true), StructField(p_channel_catalog,StringType,true), StructField(p_channel_tv,StringType,true), StructField(p_channel_radio,StringType,true), StructField(p_channel_press,StringType,true), StructField(p_channel_event,StringType,true), StructField(p_channel_demo,StringType...\n"
           }
         ]
       },
@@ -1139,15 +1140,15 @@
       "jobName": "paragraph_1661381148958_29363435",
       "id": "paragraph_1661381148958_29363435",
       "dateCreated": "2022-08-24 22:45:48.958",
-      "dateStarted": "2022-08-29 11:54:59.110",
-      "dateFinished": "2022-08-29 11:54:59.823",
+      "dateStarted": "2022-09-04 13:34:56.788",
+      "dateFinished": "2022-09-04 13:34:57.788",
       "status": "FINISHED"
     },
     {
       "title": "Reason",
-      "text": "%spark\n\nval reasonSchema \u003d new StructType()\n    .add(\"r_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"r_reason_id\", StringType, nullable \u003d true)\n    .add(\"r_reason_desc\", StringType, nullable \u003d true)\n\nval reasonDF \u003d spark.read.schema(reasonSchema).option(\"sep\",\"|\").csv(s\"$pathToData/reason.dat\")\nreasonDF.registerTempTable(\"reason\")",
+      "text": "%spark\n\nval reasonSchema \u003d new StructType()\n    .add(\"r_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"r_reason_id\", StringType, nullable \u003d true)\n    .add(\"r_reason_desc\", StringType, nullable \u003d true)\n\nval reasonDF \u003d spark.read.schema(reasonSchema).option(\"sep\",\"|\").csv(s\"$pathToData/reason.dat\")\nreasonDF.createOrReplaceTempView(\"reason\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:54:59.912",
+      "dateUpdated": "2022-09-04 13:34:57.887",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1174,7 +1175,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mreasonSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(r_reason_sk,IntegerType,true), StructField(r_reason_id,StringType,true), StructField(r_reason_desc,StringType,true))\n\u001b[1m\u001b[34mreasonDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [r_reason_sk: int, r_reason_id: string ... 1 more field]\n"
+            "data": "\u001b[1m\u001b[34mreasonSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(r_reason_sk,IntegerType,true), StructField(r_reason_id,StringType,true), StructField(r_reason_desc,StringType,true))\n\u001b[1m\u001b[34mreasonDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [r_reason_sk: int, r_reason_id: string ... 1 more field]\n"
           }
         ]
       },
@@ -1184,15 +1185,15 @@
       "jobName": "paragraph_1661413076778_585307447",
       "id": "paragraph_1661413076778_585307447",
       "dateCreated": "2022-08-25 07:37:56.779",
-      "dateStarted": "2022-08-29 11:55:00.175",
-      "dateFinished": "2022-08-29 11:55:00.830",
+      "dateStarted": "2022-09-04 13:34:58.155",
+      "dateFinished": "2022-09-04 13:34:58.935",
       "status": "FINISHED"
     },
     {
       "title": "Ship Mode",
-      "text": "%spark\n\nval shipModeSchema \u003d new StructType()\n    .add(\"sm_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"sm_ship_mode_id\", StringType, nullable \u003d true)\n    .add(\"sm_type\", StringType, nullable \u003d true)\n    .add(\"sm_code\", StringType, nullable \u003d true)\n    .add(\"sm_carrier\", StringType, nullable \u003d true)\n    .add(\"sm_contract\", StringType, nullable \u003d true)\n    \nval shipModeDF \u003d spark.read.schema(shipModeSchema).option(\"sep\",\"|\").csv(s\"$pathToData/ship_mode.dat\")\nshipModeDF.registerTempTable(\"ship_mode\")",
+      "text": "%spark\n\nval shipModeSchema \u003d new StructType()\n    .add(\"sm_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"sm_ship_mode_id\", StringType, nullable \u003d true)\n    .add(\"sm_type\", StringType, nullable \u003d true)\n    .add(\"sm_code\", StringType, nullable \u003d true)\n    .add(\"sm_carrier\", StringType, nullable \u003d true)\n    .add(\"sm_contract\", StringType, nullable \u003d true)\n    \nval shipModeDF \u003d spark.read.schema(shipModeSchema).option(\"sep\",\"|\").csv(s\"$pathToData/ship_mode.dat\")\nshipModeDF.createOrReplaceTempView(\"ship_mode\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:00.874",
+      "dateUpdated": "2022-09-04 13:34:58.955",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1219,7 +1220,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mshipModeSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(sm_ship_mode_sk,IntegerType,true), StructField(sm_ship_mode_id,StringType,true), StructField(sm_type,StringType,true), StructField(sm_code,StringType,true), StructField(sm_carrier,StringType,true), StructField(sm_contract,StringType,true))\n\u001b[1m\u001b[34mshipModeDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [sm_ship_mode_sk: int, sm_ship_mode_id: string ... 4 more fields]\n"
+            "data": "\u001b[1m\u001b[34mshipModeSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(sm_ship_mode_sk,IntegerType,true), StructField(sm_ship_mode_id,StringType,true), StructField(sm_type,StringType,true), StructField(sm_code,StringType,true), StructField(sm_carrier,StringType,true), StructField(sm_contract,StringType,true))\n\u001b[1m\u001b[34mshipModeDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [sm_ship_mode_sk: int, sm_ship_mode_id: string ... 4 more fields]\n"
           }
         ]
       },
@@ -1229,15 +1230,15 @@
       "jobName": "paragraph_1661413256822_105415377",
       "id": "paragraph_1661413256822_105415377",
       "dateCreated": "2022-08-25 07:40:56.822",
-      "dateStarted": "2022-08-29 11:55:07.920",
-      "dateFinished": "2022-08-29 11:55:08.937",
+      "dateStarted": "2022-09-04 13:35:04.285",
+      "dateFinished": "2022-09-04 13:35:05.689",
       "status": "FINISHED"
     },
     {
       "title": "Store",
-      "text": "%spark\n\nval storeSchema \u003d new StructType()\n.add(\"s_store_sk\", IntegerType, nullable \u003d true)\n.add(\"s_store_id\", StringType, nullable \u003d true)\n.add(\"s_rec_start_date\", StringType, nullable \u003d true)\n.add(\"s_rec_end_date\", StringType, nullable \u003d true)\n.add(\"s_closed_date_sk\", IntegerType, nullable \u003d true)\n.add(\"s_store_name\", StringType, nullable \u003d true)\n.add(\"s_number_employees\", IntegerType, nullable \u003d true)\n.add(\"s_floor_space\", IntegerType, nullable \u003d true)\n.add(\"s_hours\", StringType, nullable \u003d true)\n.add(\"s_manager\", StringType, nullable \u003d true)\n.add(\"s_market_id\", IntegerType, nullable \u003d true)\n.add(\"s_geography_class\", StringType, nullable \u003d true)\n.add(\"s_market_desc\", StringType, nullable \u003d true)\n.add(\"s_market_manager\", StringType, nullable \u003d true)\n.add(\"s_division_id\", IntegerType, nullable \u003d true)\n.add(\"s_division_name\", StringType, nullable \u003d true)\n.add(\"s_company_id\", IntegerType, nullable \u003d true)\n.add(\"s_company_name\", StringType, nullable \u003d true)\n.add(\"s_street_number\", StringType, nullable \u003d true)\n.add(\"s_street_name\", StringType, nullable \u003d true)\n.add(\"s_street_type\", StringType, nullable \u003d true)\n.add(\"s_suite_number\", StringType, nullable \u003d true)\n.add(\"s_city\", StringType, nullable \u003d true)\n.add(\"s_county\", StringType, nullable \u003d true)\n.add(\"s_state\", StringType, nullable \u003d true)\n.add(\"s_zip\", StringType, nullable \u003d true)\n.add(\"s_country\", StringType, nullable \u003d true)\n.add(\"s_gmt_offset\", DoubleType, nullable \u003d true)\n.add(\"s_tax_precentage\", DoubleType, nullable \u003d true)\n\nval storeDF \u003d spark.read.schema(storeSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store.dat\")\nstoreDF.registerTempTable(\"store\")",
+      "text": "%spark\n\nval storeSchema \u003d new StructType()\n.add(\"s_store_sk\", IntegerType, nullable \u003d true)\n.add(\"s_store_id\", StringType, nullable \u003d true)\n.add(\"s_rec_start_date\", StringType, nullable \u003d true)\n.add(\"s_rec_end_date\", StringType, nullable \u003d true)\n.add(\"s_closed_date_sk\", IntegerType, nullable \u003d true)\n.add(\"s_store_name\", StringType, nullable \u003d true)\n.add(\"s_number_employees\", IntegerType, nullable \u003d true)\n.add(\"s_floor_space\", IntegerType, nullable \u003d true)\n.add(\"s_hours\", StringType, nullable \u003d true)\n.add(\"s_manager\", StringType, nullable \u003d true)\n.add(\"s_market_id\", IntegerType, nullable \u003d true)\n.add(\"s_geography_class\", StringType, nullable \u003d true)\n.add(\"s_market_desc\", StringType, nullable \u003d true)\n.add(\"s_market_manager\", StringType, nullable \u003d true)\n.add(\"s_division_id\", IntegerType, nullable \u003d true)\n.add(\"s_division_name\", StringType, nullable \u003d true)\n.add(\"s_company_id\", IntegerType, nullable \u003d true)\n.add(\"s_company_name\", StringType, nullable \u003d true)\n.add(\"s_street_number\", StringType, nullable \u003d true)\n.add(\"s_street_name\", StringType, nullable \u003d true)\n.add(\"s_street_type\", StringType, nullable \u003d true)\n.add(\"s_suite_number\", StringType, nullable \u003d true)\n.add(\"s_city\", StringType, nullable \u003d true)\n.add(\"s_county\", StringType, nullable \u003d true)\n.add(\"s_state\", StringType, nullable \u003d true)\n.add(\"s_zip\", StringType, nullable \u003d true)\n.add(\"s_country\", StringType, nullable \u003d true)\n.add(\"s_gmt_offset\", DoubleType, nullable \u003d true)\n.add(\"s_tax_precentage\", DoubleType, nullable \u003d true)\n\nval storeDF \u003d spark.read.schema(storeSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store.dat\")\nstoreDF.createOrReplaceTempView(\"store\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:09.021",
+      "dateUpdated": "2022-09-04 13:35:05.788",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1264,7 +1265,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mstoreSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(s_store_sk,IntegerType,true), StructField(s_store_id,StringType,true), StructField(s_rec_start_date,StringType,true), StructField(s_rec_end_date,StringType,true), StructField(s_closed_date_sk,IntegerType,true), StructField(s_store_name,StringType,true), StructField(s_number_employees,IntegerType,true), StructField(s_floor_space,IntegerType,true), StructField(s_hours,StringType,true), StructField(s_manager,StringType,true), StructField(s_market_id,IntegerType,true), StructField(s_geography_class,StringType,true), StructField(s_market_desc,StringType,true), StructField(s_market_manager,StringType,true), StructField(s_division_id,IntegerType,true), StructField(s_division_name,StringType,tr...\n"
+            "data": "\u001b[1m\u001b[34mstoreSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(s_store_sk,IntegerType,true), StructField(s_store_id,StringType,true), StructField(s_rec_start_date,StringType,true), StructField(s_rec_end_date,StringType,true), StructField(s_closed_date_sk,IntegerType,true), StructField(s_store_name,StringType,true), StructField(s_number_employees,IntegerType,true), StructField(s_floor_space,IntegerType,true), StructField(s_hours,StringType,true), StructField(s_manager,StringType,true), StructField(s_market_id,IntegerType,true), StructField(s_geography_class,StringType,true), StructField(s_market_desc,StringType,true), StructField(s_market_manager,StringType,true), StructField(s_division_id,IntegerType,true), StructField(s_division_name,StringType,tr...\n"
           }
         ]
       },
@@ -1274,15 +1275,15 @@
       "jobName": "paragraph_1661413469366_718143123",
       "id": "paragraph_1661413469366_718143123",
       "dateCreated": "2022-08-25 07:44:29.367",
-      "dateStarted": "2022-08-29 11:55:09.296",
-      "dateFinished": "2022-08-29 11:55:10.030",
+      "dateStarted": "2022-09-04 13:35:06.048",
+      "dateFinished": "2022-09-04 13:35:06.901",
       "status": "FINISHED"
     },
     {
       "title": "Store Returns",
-      "text": "%spark\n\nval storeReturnsSchema \u003d new StructType()\n    .add(\"sr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_store_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_ticket_number\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_amt\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"sr_fee\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"sr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"sr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"sr_store_credit\", DoubleType, nullable \u003d true)\n    .add(\"sr_net_loss\", DoubleType, nullable \u003d true)\n\nval storeReturnsDF \u003d spark.read.schema(storeReturnsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store_returns.dat\")\nstoreReturnsDF.registerTempTable(\"store_returns\")\n",
+      "text": "%spark\n\nval storeReturnsSchema \u003d new StructType()\n    .add(\"sr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_store_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"sr_ticket_number\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"sr_return_amt\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"sr_fee\", DoubleType, nullable \u003d true)\n    .add(\"sr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"sr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"sr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"sr_store_credit\", DoubleType, nullable \u003d true)\n    .add(\"sr_net_loss\", DoubleType, nullable \u003d true)\n\nval storeReturnsDF \u003d spark.read.schema(storeReturnsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store_returns.dat\")\nstoreReturnsDF.createOrReplaceTempView(\"store_returns\")\n",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:10.096",
+      "dateUpdated": "2022-09-04 13:35:06.951",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1309,7 +1310,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mstoreReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(sr_returned_date_sk,IntegerType,true), StructField(sr_return_time_sk,IntegerType,true), StructField(sr_item_sk,IntegerType,true), StructField(sr_customer_sk,IntegerType,true), StructField(sr_cdemo_sk,IntegerType,true), StructField(sr_hdemo_sk,IntegerType,true), StructField(sr_addr_sk,IntegerType,true), StructField(sr_store_sk,IntegerType,true), StructField(sr_reason_sk,IntegerType,true), StructField(sr_ticket_number,IntegerType,true), StructField(sr_return_quantity,IntegerType,true), StructField(sr_return_amt,DoubleType,true), StructField(sr_return_tax,DoubleType,true), StructField(sr_return_amt_inc_tax,DoubleType,true), StructField(sr_fee,DoubleType,true), StructField(sr_return_...\n"
+            "data": "\u001b[1m\u001b[34mstoreReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(sr_returned_date_sk,IntegerType,true), StructField(sr_return_time_sk,IntegerType,true), StructField(sr_item_sk,IntegerType,true), StructField(sr_customer_sk,IntegerType,true), StructField(sr_cdemo_sk,IntegerType,true), StructField(sr_hdemo_sk,IntegerType,true), StructField(sr_addr_sk,IntegerType,true), StructField(sr_store_sk,IntegerType,true), StructField(sr_reason_sk,IntegerType,true), StructField(sr_ticket_number,IntegerType,true), StructField(sr_return_quantity,IntegerType,true), StructField(sr_return_amt,DoubleType,true), StructField(sr_return_tax,DoubleType,true), StructField(sr_return_amt_inc_tax,DoubleType,true), StructField(sr_fee,DoubleType,true), StructField(sr_return_...\n"
           }
         ]
       },
@@ -1319,15 +1320,15 @@
       "jobName": "paragraph_1661413723166_966007816",
       "id": "paragraph_1661413723166_966007816",
       "dateCreated": "2022-08-25 07:48:43.166",
-      "dateStarted": "2022-08-29 11:55:10.372",
-      "dateFinished": "2022-08-29 11:55:11.046",
+      "dateStarted": "2022-09-04 13:35:07.273",
+      "dateFinished": "2022-09-04 13:35:08.017",
       "status": "FINISHED"
     },
     {
       "title": "Store Sales",
-      "text": "%spark\n\nval storeSalesSchema \u003d new StructType()\n    .add(\"ss_sold_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_sold_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_store_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_ticket_number\", IntegerType, nullable \u003d true)\n    .add(\"ss_quantity\", IntegerType, nullable \u003d true)\n    .add(\"ss_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ss_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_sales_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_discount_amt\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_sales_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_tax\", DoubleType, nullable \u003d true)\n    .add(\"ss_coupon_amt\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_paid\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_paid_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_profit\", DoubleType, nullable \u003d true)\n    \nval storeSalesDF \u003d spark.read.schema(storeSalesSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store_sales.dat\")\nstoreSalesDF.registerTempTable(\"store_sales\")",
+      "text": "%spark\n\nval storeSalesSchema \u003d new StructType()\n    .add(\"ss_sold_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_sold_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_store_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ss_ticket_number\", IntegerType, nullable \u003d true)\n    .add(\"ss_quantity\", IntegerType, nullable \u003d true)\n    .add(\"ss_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ss_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_sales_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_discount_amt\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_sales_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ss_ext_tax\", DoubleType, nullable \u003d true)\n    .add(\"ss_coupon_amt\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_paid\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_paid_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"ss_net_profit\", DoubleType, nullable \u003d true)\n    \nval storeSalesDF \u003d spark.read.schema(storeSalesSchema).option(\"sep\",\"|\").csv(s\"$pathToData/store_sales.dat\")\nstoreSalesDF.createOrReplaceTempView(\"store_sales\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:11.073",
+      "dateUpdated": "2022-09-04 13:35:08.061",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1354,7 +1355,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mstoreSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ss_sold_date_sk,IntegerType,true), StructField(ss_sold_time_sk,IntegerType,true), StructField(ss_item_sk,IntegerType,true), StructField(ss_customer_sk,IntegerType,true), StructField(ss_cdemo_sk,IntegerType,true), StructField(ss_hdemo_sk,IntegerType,true), StructField(ss_addr_sk,IntegerType,true), StructField(ss_store_sk,IntegerType,true), StructField(ss_promo_sk,IntegerType,true), StructField(ss_ticket_number,IntegerType,true), StructField(ss_quantity,IntegerType,true), StructField(ss_wholesale_cost,DoubleType,true), StructField(ss_list_price,DoubleType,true), StructField(ss_sales_price,DoubleType,true), StructField(ss_ext_discount_amt,DoubleType,true), StructField(ss_ext_sales_pri...\n"
+            "data": "\u001b[1m\u001b[34mstoreSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ss_sold_date_sk,IntegerType,true), StructField(ss_sold_time_sk,IntegerType,true), StructField(ss_item_sk,IntegerType,true), StructField(ss_customer_sk,IntegerType,true), StructField(ss_cdemo_sk,IntegerType,true), StructField(ss_hdemo_sk,IntegerType,true), StructField(ss_addr_sk,IntegerType,true), StructField(ss_store_sk,IntegerType,true), StructField(ss_promo_sk,IntegerType,true), StructField(ss_ticket_number,IntegerType,true), StructField(ss_quantity,IntegerType,true), StructField(ss_wholesale_cost,DoubleType,true), StructField(ss_list_price,DoubleType,true), StructField(ss_sales_price,DoubleType,true), StructField(ss_ext_discount_amt,DoubleType,true), StructField(ss_ext_sales_pri...\n"
           }
         ]
       },
@@ -1364,15 +1365,15 @@
       "jobName": "paragraph_1661413996601_618273035",
       "id": "paragraph_1661413996601_618273035",
       "dateCreated": "2022-08-25 07:53:16.602",
-      "dateStarted": "2022-08-29 11:55:11.431",
-      "dateFinished": "2022-08-29 11:55:12.150",
+      "dateStarted": "2022-09-04 13:35:08.386",
+      "dateFinished": "2022-09-04 13:35:09.249",
       "status": "FINISHED"
     },
     {
       "title": "Time Dim",
-      "text": "%spark\n\nval timeDimSchema \u003d new StructType()\n    .add(\"t_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"t_time_id\", StringType, nullable \u003d true)\n    .add(\"t_time\", IntegerType, nullable \u003d true)\n    .add(\"t_hour\", IntegerType, nullable \u003d true)\n    .add(\"t_minute\", IntegerType, nullable \u003d true)\n    .add(\"t_second\", IntegerType, nullable \u003d true)\n    .add(\"t_am_pm\", StringType, nullable \u003d true)\n    .add(\"t_shift\", StringType, nullable \u003d true)\n    .add(\"t_sub_shift\", StringType, nullable \u003d true)\n    .add(\"t_meal_time\", StringType, nullable \u003d true)\n    \nval timeDimDF \u003d spark.read.schema(timeDimSchema).option(\"sep\",\"|\").csv(s\"$pathToData/time_dim.dat\")\ntimeDimDF.registerTempTable(\"time_dim\")",
+      "text": "%spark\n\nval timeDimSchema \u003d new StructType()\n    .add(\"t_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"t_time_id\", StringType, nullable \u003d true)\n    .add(\"t_time\", IntegerType, nullable \u003d true)\n    .add(\"t_hour\", IntegerType, nullable \u003d true)\n    .add(\"t_minute\", IntegerType, nullable \u003d true)\n    .add(\"t_second\", IntegerType, nullable \u003d true)\n    .add(\"t_am_pm\", StringType, nullable \u003d true)\n    .add(\"t_shift\", StringType, nullable \u003d true)\n    .add(\"t_sub_shift\", StringType, nullable \u003d true)\n    .add(\"t_meal_time\", StringType, nullable \u003d true)\n    \nval timeDimDF \u003d spark.read.schema(timeDimSchema).option(\"sep\",\"|\").csv(s\"$pathToData/time_dim.dat\")\ntimeDimDF.createOrReplaceTempView(\"time_dim\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:12.230",
+      "dateUpdated": "2022-09-04 13:35:09.285",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1399,7 +1400,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mtimeDimSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(t_time_sk,IntegerType,true), StructField(t_time_id,StringType,true), StructField(t_time,IntegerType,true), StructField(t_hour,IntegerType,true), StructField(t_minute,IntegerType,true), StructField(t_second,IntegerType,true), StructField(t_am_pm,StringType,true), StructField(t_shift,StringType,true), StructField(t_sub_shift,StringType,true), StructField(t_meal_time,StringType,true))\n\u001b[1m\u001b[34mtimeDimDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [t_time_sk: int, t_time_id: string ... 8 more fields]\n"
+            "data": "\u001b[1m\u001b[34mtimeDimSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(t_time_sk,IntegerType,true), StructField(t_time_id,StringType,true), StructField(t_time,IntegerType,true), StructField(t_hour,IntegerType,true), StructField(t_minute,IntegerType,true), StructField(t_second,IntegerType,true), StructField(t_am_pm,StringType,true), StructField(t_shift,StringType,true), StructField(t_sub_shift,StringType,true), StructField(t_meal_time,StringType,true))\n\u001b[1m\u001b[34mtimeDimDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [t_time_sk: int, t_time_id: string ... 8 more fields]\n"
           }
         ]
       },
@@ -1409,15 +1410,15 @@
       "jobName": "paragraph_1661414289560_1639423909",
       "id": "paragraph_1661414289560_1639423909",
       "dateCreated": "2022-08-25 07:58:09.560",
-      "dateStarted": "2022-08-29 11:55:12.520",
-      "dateFinished": "2022-08-29 11:55:13.291",
+      "dateStarted": "2022-09-04 13:35:14.911",
+      "dateFinished": "2022-09-04 13:35:16.002",
       "status": "FINISHED"
     },
     {
       "title": "Warehouse",
-      "text": "%spark\n\nval warehouseSchema \u003d new StructType()\n    .add(\"w_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"w_warehouse_id\", StringType, nullable \u003d true)\n    .add(\"w_warehouse_name\", StringType, nullable \u003d true)\n    .add(\"w_warehouse_sq_ft\", IntegerType, nullable \u003d true)\n    .add(\"w_street_number\", StringType, nullable \u003d true)\n    .add(\"w_street_name\", StringType, nullable \u003d true)\n    .add(\"w_street_type\", StringType, nullable \u003d true)\n    .add(\"w_suite_number\", StringType, nullable \u003d true)\n    .add(\"w_city\", StringType, nullable \u003d true)\n    .add(\"w_county\", StringType, nullable \u003d true)\n    .add(\"w_state\", StringType, nullable \u003d true)\n    .add(\"w_zip\", StringType, nullable \u003d true)\n    .add(\"w_country\", StringType, nullable \u003d true)\n    .add(\"w_gmt_offset\", DoubleType, nullable \u003d true)\n    \nval warehouseDF \u003d spark.read.schema(warehouseSchema).option(\"sep\",\"|\").csv(s\"$pathToData/warehouse.dat\")\nwarehouseDF.registerTempTable(\"warehouse\")",
+      "text": "%spark\n\nval warehouseSchema \u003d new StructType()\n    .add(\"w_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"w_warehouse_id\", StringType, nullable \u003d true)\n    .add(\"w_warehouse_name\", StringType, nullable \u003d true)\n    .add(\"w_warehouse_sq_ft\", IntegerType, nullable \u003d true)\n    .add(\"w_street_number\", StringType, nullable \u003d true)\n    .add(\"w_street_name\", StringType, nullable \u003d true)\n    .add(\"w_street_type\", StringType, nullable \u003d true)\n    .add(\"w_suite_number\", StringType, nullable \u003d true)\n    .add(\"w_city\", StringType, nullable \u003d true)\n    .add(\"w_county\", StringType, nullable \u003d true)\n    .add(\"w_state\", StringType, nullable \u003d true)\n    .add(\"w_zip\", StringType, nullable \u003d true)\n    .add(\"w_country\", StringType, nullable \u003d true)\n    .add(\"w_gmt_offset\", DoubleType, nullable \u003d true)\n    \nval warehouseDF \u003d spark.read.schema(warehouseSchema).option(\"sep\",\"|\").csv(s\"$pathToData/warehouse.dat\")\nwarehouseDF.createOrReplaceTempView(\"warehouse\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:13.318",
+      "dateUpdated": "2022-09-04 13:35:16.013",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1444,7 +1445,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mwarehouseSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(w_warehouse_sk,IntegerType,true), StructField(w_warehouse_id,StringType,true), StructField(w_warehouse_name,StringType,true), StructField(w_warehouse_sq_ft,IntegerType,true), StructField(w_street_number,StringType,true), StructField(w_street_name,StringType,true), StructField(w_street_type,StringType,true), StructField(w_suite_number,StringType,true), StructField(w_city,StringType,true), StructField(w_county,StringType,true), StructField(w_state,StringType,true), StructField(w_zip,StringType,true), StructField(w_country,StringType,true), StructField(w_gmt_offset,DoubleType,true))\n\u001b[1m\u001b[34mwarehouseDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [w_warehouse_sk: int, w_warehous...\n"
+            "data": "\u001b[1m\u001b[34mwarehouseSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(w_warehouse_sk,IntegerType,true), StructField(w_warehouse_id,StringType,true), StructField(w_warehouse_name,StringType,true), StructField(w_warehouse_sq_ft,IntegerType,true), StructField(w_street_number,StringType,true), StructField(w_street_name,StringType,true), StructField(w_street_type,StringType,true), StructField(w_suite_number,StringType,true), StructField(w_city,StringType,true), StructField(w_county,StringType,true), StructField(w_state,StringType,true), StructField(w_zip,StringType,true), StructField(w_country,StringType,true), StructField(w_gmt_offset,DoubleType,true))\n\u001b[1m\u001b[34mwarehouseDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d [w_warehouse_sk: int, w_warehous...\n"
           }
         ]
       },
@@ -1454,15 +1455,15 @@
       "jobName": "paragraph_1661415037726_350084037",
       "id": "paragraph_1661415037726_350084037",
       "dateCreated": "2022-08-25 08:10:37.727",
-      "dateStarted": "2022-08-29 11:55:17.471",
-      "dateFinished": "2022-08-29 11:55:18.241",
+      "dateStarted": "2022-09-04 13:35:16.379",
+      "dateFinished": "2022-09-04 13:35:17.372",
       "status": "FINISHED"
     },
     {
       "title": "Web Page",
-      "text": "%spark\n\nval webPageSchema \u003d  new StructType()\n    .add(\"wp_web_page_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_web_page_id\",StringType, nullable \u003d true)\n    .add(\"wp_rec_start_date\",StringType, nullable \u003d true)\n    .add(\"wp_rec_end_date\",StringType, nullable \u003d true)\n    .add(\"wp_creation_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_access_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_autogen_flag\",StringType, nullable \u003d true)\n    .add(\"wp_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_url\",StringType, nullable \u003d true)\n    .add(\"wp_type\",StringType, nullable \u003d true)\n    .add(\"wp_char_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_link_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_image_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_max_ad_count\",IntegerType, nullable \u003d true)\n\nval webPageDF \u003d spark.read.schema(webPageSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_page.dat\")\nwebPageDF.registerTempTable(\"web_page\")",
+      "text": "%spark\n\nval webPageSchema \u003d  new StructType()\n    .add(\"wp_web_page_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_web_page_id\",StringType, nullable \u003d true)\n    .add(\"wp_rec_start_date\",StringType, nullable \u003d true)\n    .add(\"wp_rec_end_date\",StringType, nullable \u003d true)\n    .add(\"wp_creation_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_access_date_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_autogen_flag\",StringType, nullable \u003d true)\n    .add(\"wp_customer_sk\",IntegerType, nullable \u003d true)\n    .add(\"wp_url\",StringType, nullable \u003d true)\n    .add(\"wp_type\",StringType, nullable \u003d true)\n    .add(\"wp_char_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_link_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_image_count\",IntegerType, nullable \u003d true)\n    .add(\"wp_max_ad_count\",IntegerType, nullable \u003d true)\n\nval webPageDF \u003d spark.read.schema(webPageSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_page.dat\")\nwebPageDF.createOrReplaceTempView(\"web_page\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:18.272",
+      "dateUpdated": "2022-09-04 13:35:17.381",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1489,7 +1490,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mwebPageSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(wp_web_page_sk,IntegerType,true), StructField(wp_web_page_id,StringType,true), StructField(wp_rec_start_date,StringType,true), StructField(wp_rec_end_date,StringType,true), StructField(wp_creation_date_sk,IntegerType,true), StructField(wp_access_date_sk,IntegerType,true), StructField(wp_autogen_flag,StringType,true), StructField(wp_customer_sk,IntegerType,true), StructField(wp_url,StringType,true), StructField(wp_type,StringType,true), StructField(wp_char_count,IntegerType,true), StructField(wp_link_count,IntegerType,true), StructField(wp_image_count,IntegerType,true), StructField(wp_max_ad_count,IntegerType,true))\n\u001b[1m\u001b[34mwebPageDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d ...\n"
+            "data": "\u001b[1m\u001b[34mwebPageSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(wp_web_page_sk,IntegerType,true), StructField(wp_web_page_id,StringType,true), StructField(wp_rec_start_date,StringType,true), StructField(wp_rec_end_date,StringType,true), StructField(wp_creation_date_sk,IntegerType,true), StructField(wp_access_date_sk,IntegerType,true), StructField(wp_autogen_flag,StringType,true), StructField(wp_customer_sk,IntegerType,true), StructField(wp_url,StringType,true), StructField(wp_type,StringType,true), StructField(wp_char_count,IntegerType,true), StructField(wp_link_count,IntegerType,true), StructField(wp_image_count,IntegerType,true), StructField(wp_max_ad_count,IntegerType,true))\n\u001b[1m\u001b[34mwebPageDF\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.DataFrame\u001b[0m \u003d ...\n"
           }
         ]
       },
@@ -1499,15 +1500,15 @@
       "jobName": "paragraph_1661416229695_663712671",
       "id": "paragraph_1661416229695_663712671",
       "dateCreated": "2022-08-25 08:30:29.696",
-      "dateStarted": "2022-08-29 11:55:18.622",
-      "dateFinished": "2022-08-29 11:55:19.291",
+      "dateStarted": "2022-09-04 13:35:17.744",
+      "dateFinished": "2022-09-04 13:35:18.692",
       "status": "FINISHED"
     },
     {
       "title": "Web Returns",
-      "text": "%spark\n\nval webReturnsSchema \u003d new StructType()\n    .add(\"wr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returned_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_web_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_order_number\", IntegerType, nullable \u003d true)\n    .add(\"wr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"wr_return_amt\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"wr_fee\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"wr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"wr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"wr_account_credit\", DoubleType, nullable \u003d true)\n    .add(\"wr_net_loss\", DoubleType, nullable \u003d true)\n\nval webReturnsDF \u003d spark.read.schema(webReturnsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_returns.dat\")\nwebReturnsDF.registerTempTable(\"web_returns\")",
+      "text": "%spark\n\nval webReturnsSchema \u003d new StructType()\n    .add(\"wr_returned_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returned_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_refunded_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_returning_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_web_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_reason_sk\", IntegerType, nullable \u003d true)\n    .add(\"wr_order_number\", IntegerType, nullable \u003d true)\n    .add(\"wr_return_quantity\", IntegerType, nullable \u003d true)\n    .add(\"wr_return_amt\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_tax\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_amt_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"wr_fee\", DoubleType, nullable \u003d true)\n    .add(\"wr_return_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"wr_refunded_cash\", DoubleType, nullable \u003d true)\n    .add(\"wr_reversed_charge\", DoubleType, nullable \u003d true)\n    .add(\"wr_account_credit\", DoubleType, nullable \u003d true)\n    .add(\"wr_net_loss\", DoubleType, nullable \u003d true)\n\nval webReturnsDF \u003d spark.read.schema(webReturnsSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_returns.dat\")\nwebReturnsDF.createOrReplaceTempView(\"web_returns\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:19.323",
+      "dateUpdated": "2022-09-04 13:35:18.747",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1534,7 +1535,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mwebReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(wr_returned_date_sk,IntegerType,true), StructField(wr_returned_time_sk,IntegerType,true), StructField(wr_item_sk,IntegerType,true), StructField(wr_refunded_customer_sk,IntegerType,true), StructField(wr_refunded_cdemo_sk,IntegerType,true), StructField(wr_refunded_hdemo_sk,IntegerType,true), StructField(wr_refunded_addr_sk,IntegerType,true), StructField(wr_returning_customer_sk,IntegerType,true), StructField(wr_returning_cdemo_sk,IntegerType,true), StructField(wr_returning_hdemo_sk,IntegerType,true), StructField(wr_returning_addr_sk,IntegerType,true), StructField(wr_web_page_sk,IntegerType,true), StructField(wr_reason_sk,IntegerType,true), StructField(wr_order_number,IntegerType,true...\n"
+            "data": "\u001b[1m\u001b[34mwebReturnsSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(wr_returned_date_sk,IntegerType,true), StructField(wr_returned_time_sk,IntegerType,true), StructField(wr_item_sk,IntegerType,true), StructField(wr_refunded_customer_sk,IntegerType,true), StructField(wr_refunded_cdemo_sk,IntegerType,true), StructField(wr_refunded_hdemo_sk,IntegerType,true), StructField(wr_refunded_addr_sk,IntegerType,true), StructField(wr_returning_customer_sk,IntegerType,true), StructField(wr_returning_cdemo_sk,IntegerType,true), StructField(wr_returning_hdemo_sk,IntegerType,true), StructField(wr_returning_addr_sk,IntegerType,true), StructField(wr_web_page_sk,IntegerType,true), StructField(wr_reason_sk,IntegerType,true), StructField(wr_order_number,IntegerType,true...\n"
           }
         ]
       },
@@ -1544,15 +1545,15 @@
       "jobName": "paragraph_1661416625527_1402532917",
       "id": "paragraph_1661416625527_1402532917",
       "dateCreated": "2022-08-25 08:37:05.527",
-      "dateStarted": "2022-08-29 11:55:19.663",
-      "dateFinished": "2022-08-29 11:55:20.432",
+      "dateStarted": "2022-09-04 13:35:28.960",
+      "dateFinished": "2022-09-04 13:35:30.544",
       "status": "FINISHED"
     },
     {
       "title": "Web Sales",
-      "text": "%spark\n\nval webSalesSchema \u003d new StructType()\n    .add(\"ws_sold_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_sold_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_web_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_web_site_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_order_number\", IntegerType, nullable \u003d true)\n    .add(\"ws_quantity\", IntegerType, nullable \u003d true)\n    .add(\"ws_wholesale_cost\", IntegerType, nullable \u003d true)\n    .add(\"ws_list_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_sales_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_discount_amt\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_sales_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_coupon_amt\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_ship\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_ship_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_profit\", DoubleType, nullable \u003d true)\n    \nval webSalesDF \u003d spark.read.schema(webSalesSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_sales.dat\")\nwebSalesDF.registerTempTable(\"web_sales\")",
+      "text": "%spark\n\nval webSalesSchema \u003d new StructType()\n    .add(\"ws_sold_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_sold_time_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_item_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_bill_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_customer_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_cdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_hdemo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_addr_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_web_page_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_web_site_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_ship_mode_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_warehouse_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_promo_sk\", IntegerType, nullable \u003d true)\n    .add(\"ws_order_number\", IntegerType, nullable \u003d true)\n    .add(\"ws_quantity\", IntegerType, nullable \u003d true)\n    .add(\"ws_wholesale_cost\", IntegerType, nullable \u003d true)\n    .add(\"ws_list_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_sales_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_discount_amt\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_sales_price\", IntegerType, nullable \u003d true)\n    .add(\"ws_ext_wholesale_cost\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_list_price\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_coupon_amt\", DoubleType, nullable \u003d true)\n    .add(\"ws_ext_ship_cost\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_ship\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_paid_inc_ship_tax\", DoubleType, nullable \u003d true)\n    .add(\"ws_net_profit\", DoubleType, nullable \u003d true)\n    \nval webSalesDF \u003d spark.read.schema(webSalesSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_sales.dat\")\nwebSalesDF.createOrReplaceTempView(\"web_sales\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:20.460",
+      "dateUpdated": "2022-09-04 13:35:30.562",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1579,7 +1580,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mwebSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ws_sold_date_sk,IntegerType,true), StructField(ws_sold_time_sk,IntegerType,true), StructField(ws_ship_date_sk,IntegerType,true), StructField(ws_item_sk,IntegerType,true), StructField(ws_bill_customer_sk,IntegerType,true), StructField(ws_bill_cdemo_sk,IntegerType,true), StructField(ws_bill_hdemo_sk,IntegerType,true), StructField(ws_bill_addr_sk,IntegerType,true), StructField(ws_ship_customer_sk,IntegerType,true), StructField(ws_ship_cdemo_sk,IntegerType,true), StructField(ws_ship_hdemo_sk,IntegerType,true), StructField(ws_ship_addr_sk,IntegerType,true), StructField(ws_web_page_sk,IntegerType,true), StructField(ws_web_site_sk,IntegerType,true), StructField(ws_ship_mode_sk,IntegerType,t...\n"
+            "data": "\u001b[1m\u001b[34mwebSalesSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(ws_sold_date_sk,IntegerType,true), StructField(ws_sold_time_sk,IntegerType,true), StructField(ws_ship_date_sk,IntegerType,true), StructField(ws_item_sk,IntegerType,true), StructField(ws_bill_customer_sk,IntegerType,true), StructField(ws_bill_cdemo_sk,IntegerType,true), StructField(ws_bill_hdemo_sk,IntegerType,true), StructField(ws_bill_addr_sk,IntegerType,true), StructField(ws_ship_customer_sk,IntegerType,true), StructField(ws_ship_cdemo_sk,IntegerType,true), StructField(ws_ship_hdemo_sk,IntegerType,true), StructField(ws_ship_addr_sk,IntegerType,true), StructField(ws_web_page_sk,IntegerType,true), StructField(ws_web_site_sk,IntegerType,true), StructField(ws_ship_mode_sk,IntegerType,t...\n"
           }
         ]
       },
@@ -1589,15 +1590,15 @@
       "jobName": "paragraph_1661416899043_424430865",
       "id": "paragraph_1661416899043_424430865",
       "dateCreated": "2022-08-25 08:41:39.043",
-      "dateStarted": "2022-08-29 11:55:20.834",
-      "dateFinished": "2022-08-29 11:55:21.496",
+      "dateStarted": "2022-09-04 13:35:30.808",
+      "dateFinished": "2022-09-04 13:35:31.691",
       "status": "FINISHED"
     },
     {
       "title": "Web Site",
-      "text": "%spark\n\nval webSiteSchema \u003d new StructType()\n    .add(\"web_site_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_site_id\", StringType, nullable \u003d true)\n    .add(\"web_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"web_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"web_name\", StringType, nullable \u003d true)\n    .add(\"web_open_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_close_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_class\", StringType, nullable \u003d true)\n    .add(\"web_manager\", StringType, nullable \u003d true)\n    .add(\"web_mkt_id\", IntegerType, nullable \u003d true)\n    .add(\"web_mkt_class\", StringType, nullable \u003d true)\n    .add(\"web_mkt_desc\", StringType, nullable \u003d true)\n    .add(\"web_market_manager\", StringType, nullable \u003d true)\n    .add(\"web_company_id\", IntegerType, nullable \u003d true)\n    .add(\"web_company_name\", StringType, nullable \u003d true)\n    .add(\"web_street_number\", StringType, nullable \u003d true)\n    .add(\"web_street_name\", StringType, nullable \u003d true)\n    .add(\"web_street_type\", StringType, nullable \u003d true)\n    .add(\"web_suite_number\", StringType, nullable \u003d true)\n    .add(\"web_city\", StringType, nullable \u003d true)\n    .add(\"web_county\", StringType, nullable \u003d true)\n    .add(\"web_state\", StringType, nullable \u003d true)\n    .add(\"web_zip\", StringType, nullable \u003d true)\n    .add(\"web_country\", StringType, nullable \u003d true)\n    .add(\"web_gmt_offset\", DoubleType, nullable \u003d true)\n    .add(\"web_tax_percentage\", DoubleType, nullable \u003d true)\n    \nval webSiteDF \u003d spark.read.schema(webSiteSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_site.dat\")\nwebSiteDF.registerTempTable(\"web_site\")",
+      "text": "%spark\n\nval webSiteSchema \u003d new StructType()\n    .add(\"web_site_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_site_id\", StringType, nullable \u003d true)\n    .add(\"web_rec_start_date\", StringType, nullable \u003d true)\n    .add(\"web_rec_end_date\", StringType, nullable \u003d true)\n    .add(\"web_name\", StringType, nullable \u003d true)\n    .add(\"web_open_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_close_date_sk\", IntegerType, nullable \u003d true)\n    .add(\"web_class\", StringType, nullable \u003d true)\n    .add(\"web_manager\", StringType, nullable \u003d true)\n    .add(\"web_mkt_id\", IntegerType, nullable \u003d true)\n    .add(\"web_mkt_class\", StringType, nullable \u003d true)\n    .add(\"web_mkt_desc\", StringType, nullable \u003d true)\n    .add(\"web_market_manager\", StringType, nullable \u003d true)\n    .add(\"web_company_id\", IntegerType, nullable \u003d true)\n    .add(\"web_company_name\", StringType, nullable \u003d true)\n    .add(\"web_street_number\", StringType, nullable \u003d true)\n    .add(\"web_street_name\", StringType, nullable \u003d true)\n    .add(\"web_street_type\", StringType, nullable \u003d true)\n    .add(\"web_suite_number\", StringType, nullable \u003d true)\n    .add(\"web_city\", StringType, nullable \u003d true)\n    .add(\"web_county\", StringType, nullable \u003d true)\n    .add(\"web_state\", StringType, nullable \u003d true)\n    .add(\"web_zip\", StringType, nullable \u003d true)\n    .add(\"web_country\", StringType, nullable \u003d true)\n    .add(\"web_gmt_offset\", DoubleType, nullable \u003d true)\n    .add(\"web_tax_percentage\", DoubleType, nullable \u003d true)\n    \nval webSiteDF \u003d spark.read.schema(webSiteSchema).option(\"sep\",\"|\").csv(s\"$pathToData/web_site.dat\")\nwebSiteDF.createOrReplaceTempView(\"web_site\")",
       "user": "anonymous",
-      "dateUpdated": "2022-08-29 11:55:21.534",
+      "dateUpdated": "2022-09-04 13:35:31.709",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -1624,7 +1625,7 @@
         "msg": [
           {
             "type": "TEXT",
-            "data": "\u001b[33mwarning: \u001b[0mone deprecation (since 2.0.0); for details, enable `:setting -deprecation\u0027 or `:replay -deprecation\u0027\n\u001b[1m\u001b[34mwebSiteSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(web_site_sk,IntegerType,true), StructField(web_site_id,StringType,true), StructField(web_rec_start_date,StringType,true), StructField(web_rec_end_date,StringType,true), StructField(web_name,StringType,true), StructField(web_open_date_sk,IntegerType,true), StructField(web_close_date_sk,IntegerType,true), StructField(web_class,StringType,true), StructField(web_manager,StringType,true), StructField(web_mkt_id,IntegerType,true), StructField(web_mkt_class,StringType,true), StructField(web_mkt_desc,StringType,true), StructField(web_market_manager,StringType,true), StructField(web_company_id,IntegerType,true), StructField(web_company_name,StringType,true), StructField(web_street_number,Strin...\n"
+            "data": "\u001b[1m\u001b[34mwebSiteSchema\u001b[0m: \u001b[1m\u001b[32morg.apache.spark.sql.types.StructType\u001b[0m \u003d StructType(StructField(web_site_sk,IntegerType,true), StructField(web_site_id,StringType,true), StructField(web_rec_start_date,StringType,true), StructField(web_rec_end_date,StringType,true), StructField(web_name,StringType,true), StructField(web_open_date_sk,IntegerType,true), StructField(web_close_date_sk,IntegerType,true), StructField(web_class,StringType,true), StructField(web_manager,StringType,true), StructField(web_mkt_id,IntegerType,true), StructField(web_mkt_class,StringType,true), StructField(web_mkt_desc,StringType,true), StructField(web_market_manager,StringType,true), StructField(web_company_id,IntegerType,true), StructField(web_company_name,StringType,true), StructField(web_street_number,Strin...\n"
           }
         ]
       },
@@ -1634,8 +1635,8 @@
       "jobName": "paragraph_1661417151028_323264596",
       "id": "paragraph_1661417151028_323264596",
       "dateCreated": "2022-08-25 08:45:51.029",
-      "dateStarted": "2022-08-29 11:55:21.864",
-      "dateFinished": "2022-08-29 11:55:22.479",
+      "dateStarted": "2022-09-04 13:35:32.203",
+      "dateFinished": "2022-09-04 13:35:33.065",
       "status": "FINISHED"
     }
   ],
