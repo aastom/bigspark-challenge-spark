@@ -4,7 +4,7 @@
       "title": "Net return losses for each date",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval netReturnLossDF \u003d sqlContext.table(\"net_return_losses\")\nnetReturnLossDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.net_return_losses\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:09.136",
+      "dateUpdated": "2022-09-04 17:19:29.994",
       "progress": 100,
       "config": {
         "tableHide": true,
@@ -44,7 +44,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d68"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d59"
             }
           ],
           "interpreterSettingId": "spark"
@@ -54,16 +54,16 @@
       "jobName": "paragraph_1662289053412_301845036",
       "id": "paragraph_1662289053412_301845036",
       "dateCreated": "2022-09-04 10:57:33.412",
-      "dateStarted": "2022-09-04 13:44:09.340",
-      "dateFinished": "2022-09-04 13:44:27.035",
+      "dateStarted": "2022-09-04 17:19:30.185",
+      "dateFinished": "2022-09-04 17:19:46.663",
       "status": "FINISHED"
     },
     {
       "title": "Sales traffic for each promotion",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval promotionSalesDF \u003d sqlContext.table(\"promotion_sales\")\npromotionSalesDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.promotion_sales\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:27.062",
-      "progress": 100,
+      "dateUpdated": "2022-09-04 17:19:46.703",
+      "progress": 90,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -102,7 +102,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d69"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d60"
             }
           ],
           "interpreterSettingId": "spark"
@@ -112,16 +112,16 @@
       "jobName": "paragraph_1662294325325_505110071",
       "id": "paragraph_1662294325325_505110071",
       "dateCreated": "2022-09-04 12:25:25.325",
-      "dateStarted": "2022-09-04 13:44:27.969",
-      "dateFinished": "2022-09-04 13:44:35.569",
+      "dateStarted": "2022-09-04 17:19:46.942",
+      "dateFinished": "2022-09-04 17:19:53.868",
       "status": "FINISHED"
     },
     {
       "title": "Net profit on each weekday",
       "text": "%spark\nimport org.apache.spark.sql.SaveMode._\n\nval weekdayNetProfitsDF \u003d sqlContext.table(\"weekday_net_profits\")\nweekdayNetProfitsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.weekday_net_profits\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:35.583",
-      "progress": 78,
+      "dateUpdated": "2022-09-04 17:19:53.952",
+      "progress": 100,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -160,7 +160,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d70"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d61"
             }
           ],
           "interpreterSettingId": "spark"
@@ -170,16 +170,16 @@
       "jobName": "paragraph_1662294612615_986732896",
       "id": "paragraph_1662294612615_986732896",
       "dateCreated": "2022-09-04 12:30:12.615",
-      "dateStarted": "2022-09-04 13:44:35.949",
-      "dateFinished": "2022-09-04 13:44:41.377",
+      "dateStarted": "2022-09-04 17:19:54.155",
+      "dateFinished": "2022-09-04 17:19:59.174",
       "status": "FINISHED"
     },
     {
       "title": "Sales volume on each weekday ",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval weekdaySalesDF \u003d sqlContext.table(\"weekday_sales\")\nweekdaySalesDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.weekday_sales\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:41.450",
-      "progress": 100,
+      "dateUpdated": "2022-09-04 17:19:59.260",
+      "progress": 78,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -218,7 +218,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d71"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d62"
             }
           ],
           "interpreterSettingId": "spark"
@@ -228,16 +228,16 @@
       "jobName": "paragraph_1662294708271_1691761972",
       "id": "paragraph_1662294708271_1691761972",
       "dateCreated": "2022-09-04 12:31:48.271",
-      "dateStarted": "2022-09-04 13:44:41.718",
-      "dateFinished": "2022-09-04 13:44:46.771",
+      "dateStarted": "2022-09-04 17:19:59.458",
+      "dateFinished": "2022-09-04 17:20:04.268",
       "status": "FINISHED"
     },
     {
       "title": "Frequently returned items",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval frequentlyReturnedItemsDF \u003d sqlContext.table(\"frequently_returned_items\")\nfrequentlyReturnedItemsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.frequently_returned_items\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:46.825",
-      "progress": 100,
+      "dateUpdated": "2022-09-04 17:20:04.364",
+      "progress": 83,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -276,7 +276,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d72"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d63"
             }
           ],
           "interpreterSettingId": "spark"
@@ -286,16 +286,16 @@
       "jobName": "paragraph_1662294768740_501193347",
       "id": "paragraph_1662294768740_501193347",
       "dateCreated": "2022-09-04 12:32:48.740",
-      "dateStarted": "2022-09-04 13:44:47.147",
-      "dateFinished": "2022-09-04 13:44:52.177",
+      "dateStarted": "2022-09-04 17:20:04.546",
+      "dateFinished": "2022-09-04 17:20:11.473",
       "status": "FINISHED"
     },
     {
       "title": "The educational status of web item returners ",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval educationalStatusWebItemReturnersDF \u003d sqlContext.table(\"educational_status_web_item_returners\")\neducationalStatusWebItemReturnersDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.educational_status_web_item_returners\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:49:50.282",
-      "progress": 100,
+      "dateUpdated": "2022-09-04 17:20:11.558",
+      "progress": 92,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -334,7 +334,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d73"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d64"
             }
           ],
           "interpreterSettingId": "spark"
@@ -344,16 +344,16 @@
       "jobName": "paragraph_1662294863377_1702781161",
       "id": "paragraph_1662294863377_1702781161",
       "dateCreated": "2022-09-04 12:34:23.377",
-      "dateStarted": "2022-09-04 13:44:52.512",
-      "dateFinished": "2022-09-04 13:44:57.587",
+      "dateStarted": "2022-09-04 17:20:11.768",
+      "dateFinished": "2022-09-04 17:20:16.466",
       "status": "FINISHED"
     },
     {
       "title": "Most expensive and cheapest items in each category",
       "text": "%spark\n\nimport org.apache.spark.sql.SaveMode._\n\nval mostExpensiveCheapestItemsDF \u003d sqlContext.table(\"most_expensive_cheapest_items\")\nmostExpensiveCheapestItemsDF.write.format(\"bigquery\")\n    .mode(Append)\n    .option(\"writeMethod\", \"direct\")\n    .option(\"table\",\"bigspark_tpcds_dataset.most_expensive_cheapest_items\")\n    .save()",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:44:57.618",
-      "progress": 90,
+      "dateUpdated": "2022-09-04 17:20:16.470",
+      "progress": 100,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -392,7 +392,7 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d74"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d65"
             }
           ],
           "interpreterSettingId": "spark"
@@ -402,14 +402,14 @@
       "jobName": "paragraph_1662294937281_1109368826",
       "id": "paragraph_1662294937281_1109368826",
       "dateCreated": "2022-09-04 12:35:37.281",
-      "dateStarted": "2022-09-04 13:44:57.934",
-      "dateFinished": "2022-09-04 13:45:02.291",
+      "dateStarted": "2022-09-04 17:20:16.725",
+      "dateFinished": "2022-09-04 17:20:20.762",
       "status": "FINISHED"
     },
     {
       "text": "%spark\n",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:45:02.333",
+      "dateUpdated": "2022-09-04 17:20:20.831",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -440,8 +440,8 @@
       "jobName": "paragraph_1662294996578_2035905176",
       "id": "paragraph_1662294996578_2035905176",
       "dateCreated": "2022-09-04 12:36:36.578",
-      "dateStarted": "2022-09-04 13:45:02.682",
-      "dateFinished": "2022-09-04 13:45:03.251",
+      "dateStarted": "2022-09-04 17:20:21.044",
+      "dateFinished": "2022-09-04 17:20:21.287",
       "status": "FINISHED"
     }
   ],
@@ -456,6 +456,6 @@
     "isZeppelinNotebookCronEnable": false
   },
   "info": {
-    "isRunning": false
+    "isRunning": true
   }
 }

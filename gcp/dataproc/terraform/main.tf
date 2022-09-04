@@ -65,6 +65,8 @@ resource "google_dataproc_cluster" "bigspark-cluster" {
         "dataproc:dataproc.allow.zero.workers" = "true"
         "zeppelin:zeppelin.notebook.gcs.dir"   = "gs://${var.zeppelin_bucket}/notebooks"
         "spark:spark.jars.packages"            = "com.google.cloud.spark:spark-3.1-bigquery:0.26.0-preview"
+        "spark:spark.hadoop.fs.s3a.access.key" = var.aws_access_key_id
+        "spark:spark.hadoop.fs.s3a.secret.key" = var.aws_secret_access_key
       }
       optional_components = var.additional_components
     }

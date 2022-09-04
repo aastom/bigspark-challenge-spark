@@ -4,8 +4,8 @@
       "title": "Net return losses",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS net_return_losses;\nCREATE TABLE IF NOT EXISTS net_return_losses AS (\n    WITH web_loss AS\n        (SELECT DISTINCT d_date web_date,\n                         SUM(wr_net_loss) OVER(PARTITION BY wr_returned_date_sk) web_net_loss\n         FROM web_returns\n         JOIN date_dim ON wr_returned_date_sk \u003d d_date_sk\n         ORDER BY web_date DESC),\n         store_loss AS\n        (SELECT DISTINCT d_date store_date,\n                         SUM(sr_net_loss) OVER(PARTITION BY sr_returned_date_sk) store_net_loss\n         FROM store_returns\n         JOIN date_dim ON sr_returned_date_sk \u003d d_date_sk\n         ORDER BY store_date DESC)\n    SELECT store_net_loss,\n           web_net_loss,\n           store_date\n    FROM store_loss\n    JOIN web_loss ON web_date \u003d store_date\n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:37:43.213",
-      "progress": 45,
+      "dateUpdated": "2022-09-04 17:14:42.773",
+      "progress": 41,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -42,19 +42,19 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d1"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d1"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d2"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d2"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d3"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d3"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d4"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d4"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d6"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d6"
             }
           ],
           "interpreterSettingId": "spark"
@@ -64,15 +64,15 @@
       "jobName": "paragraph_1662289163521_1387040000",
       "id": "paragraph_1662289163521_1387040000",
       "dateCreated": "2022-09-04 10:59:23.521",
-      "dateStarted": "2022-09-04 13:37:43.438",
-      "dateFinished": "2022-09-04 13:38:43.128",
+      "dateStarted": "2022-09-04 17:14:42.946",
+      "dateFinished": "2022-09-04 17:15:29.299",
       "status": "FINISHED"
     },
     {
       "title": "Sales traffic for each promotion",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS promotion_sales;\nCREATE TABLE IF NOT EXISTS promotion_sales (\n    WITH ss(\n    \n        SELECT \n        DISTINCT CASE WHEN p_promo_name IS NULL THEN \u0027NO PROMO\u0027 ELSE p_promo_name END promo_name,\n        COUNT(*) OVER(PARTITION BY p_promo_name) ss_sales_count\n        FROM store_sales\n        JOIN promotion ON ss_promo_sk \u003d p_promo_sk\n    ), ws(\n        SELECT \n        DISTINCT CASE WHEN p_promo_name IS NULL THEN \u0027NO PROMO\u0027 ELSE p_promo_name END promo_name,\n        COUNT(*) OVER(PARTITION BY p_promo_name) ws_sales_count\n        FROM web_sales\n        JOIN promotion ON ws_promo_sk \u003d p_promo_sk\n    )\n    SELECT ss.promo_name, ss_sales_count, ws_sales_count\n    FROM ss\n    FULL JOIN ws on ss.promo_name \u003d ws.promo_name\n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:38:43.225",
+      "dateUpdated": "2022-09-04 17:15:29.309",
       "progress": 12,
       "config": {
         "tableHide": true,
@@ -107,25 +107,25 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d8"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d8"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d9"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d9"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d10"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d10"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d11"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d11"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d12"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d12"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d13"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d13"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d14"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d14"
             }
           ],
           "interpreterSettingId": "spark"
@@ -135,15 +135,15 @@
       "jobName": "paragraph_1662289336938_92952361",
       "id": "paragraph_1662289336938_92952361",
       "dateCreated": "2022-09-04 11:02:16.938",
-      "dateStarted": "2022-09-04 13:38:43.508",
-      "dateFinished": "2022-09-04 13:39:40.827",
+      "dateStarted": "2022-09-04 17:15:29.470",
+      "dateFinished": "2022-09-04 17:16:24.249",
       "status": "FINISHED"
     },
     {
       "title": "Net profit on each weekday",
       "text": "%spark.sql \n\nDROP TABLE IF EXISTS weekday_net_profits;\nCREATE TABLE IF NOT EXISTS weekday_net_profits(\n    WITH ss AS (\n        SELECT d_day_name,\n        SUM(ss_net_profit) ss_net_profit\n        FROM store_sales \n        JOIN date_dim ON ss_sold_date_sk \u003d d_date_sk \n        GROUP BY d_day_name\n        ORDER BY ss_net_profit DESC\n    ), ws AS(\n        SELECT d_day_name,\n        SUM(ws_net_profit) ws_net_profit\n        FROM web_sales \n        JOIN date_dim ON ws_sold_date_sk \u003d d_date_sk \n        GROUP BY d_day_name\n        ORDER BY ws_net_profit DESC\n    )\n    SELECT ss.d_day_name day, ss_net_profit store_sales, ws_net_profit web_sales\n    FROM ss\n    FULL JOIN ws on ss.d_day_name \u003d ws.d_day_name \n)\n",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:43:02.059",
+      "dateUpdated": "2022-09-04 17:16:24.251",
       "progress": 25,
       "config": {
         "tableHide": true,
@@ -178,13 +178,13 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d16"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d16"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d17"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d17"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d18"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d18"
             }
           ],
           "interpreterSettingId": "spark"
@@ -194,15 +194,15 @@
       "jobName": "paragraph_1662290353276_116926044",
       "id": "paragraph_1662290353276_116926044",
       "dateCreated": "2022-09-04 11:19:13.276",
-      "dateStarted": "2022-09-04 13:39:41.113",
-      "dateFinished": "2022-09-04 13:40:25.496",
+      "dateStarted": "2022-09-04 17:16:24.528",
+      "dateFinished": "2022-09-04 17:17:06.706",
       "status": "FINISHED"
     },
     {
       "title": "Sales volume on each weekday ",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS weekday_sales;\nCREATE TABLE IF NOT EXISTS weekday_sales(\n    WITH ss AS (\n        SELECT d_day_name,COUNT(*) ss_sales_count\n        FROM store_sales \n        JOIN date_dim ON ss_sold_date_sk \u003d d_date_sk \n        GROUP BY d_day_name\n        ORDER BY ss_sales_count DESC\n    ), ws AS(\n        SELECT d_day_name,COUNT(*) ws_sales_count\n        FROM web_sales \n        JOIN date_dim ON ws_sold_date_sk \u003d d_date_sk \n        GROUP BY d_day_name\n        ORDER BY ws_sales_count DESC\n    )\n    SELECT ss.d_day_name day, ss_sales_count store_sales, ws_sales_count web_sales\n    FROM ss\n    FULL JOIN ws on ss.d_day_name \u003d ws.d_day_name \n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:40:25.578",
+      "dateUpdated": "2022-09-04 17:17:06.777",
       "progress": 17,
       "config": {
         "tableHide": true,
@@ -237,13 +237,13 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d20"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d20"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d21"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d21"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d22"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d22"
             }
           ],
           "interpreterSettingId": "spark"
@@ -253,15 +253,15 @@
       "jobName": "paragraph_1662291635519_1737829403",
       "id": "paragraph_1662291635519_1737829403",
       "dateCreated": "2022-09-04 11:40:35.519",
-      "dateStarted": "2022-09-04 13:40:25.867",
-      "dateFinished": "2022-09-04 13:41:07.991",
+      "dateStarted": "2022-09-04 17:17:07.014",
+      "dateFinished": "2022-09-04 17:17:49.924",
       "status": "FINISHED"
     },
     {
       "title": "Frequently returned items",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS frequently_returned_items;\nCREATE TABLE IF NOT EXISTS frequently_returned_items(\n    WITH ws AS\n        ( SELECT DISTINCT i_product_name ws_product_name, COUNT(*) OVER(PARTITION BY wr_item_sk) ws_return_count\n         FROM web_returns\n         JOIN item ON i_item_sk \u003d wr_item_sk\n         ORDER BY ws_return_count DESC),\n            ss AS\n        ( SELECT DISTINCT i_product_name ss_product_name, COUNT(*) OVER(PARTITION BY sr_item_sk) ss_return_count\n         FROM store_returns\n         JOIN item ON i_item_sk \u003d sr_item_sk\n         ORDER BY ss_return_count DESC)\n    SELECT ws_return_count,\n           ss_return_count,\n           ss_product_name\n    FROM ss\n    JOIN ws ON ws_product_name \u003d ss_product_name\n    ORDER BY ss_return_count, ws_return_count DESC\n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:41:08.030",
+      "dateUpdated": "2022-09-04 17:17:49.959",
       "progress": 26,
       "config": {
         "tableHide": true,
@@ -296,25 +296,25 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d24"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d24"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d25"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d25"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d26"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d26"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d27"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d27"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d29"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d29"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d30"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d30"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d31"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d31"
             }
           ],
           "interpreterSettingId": "spark"
@@ -324,15 +324,15 @@
       "jobName": "paragraph_1662292046817_661534544",
       "id": "paragraph_1662292046817_661534544",
       "dateCreated": "2022-09-04 11:47:26.817",
-      "dateStarted": "2022-09-04 13:41:08.353",
-      "dateFinished": "2022-09-04 13:41:22.921",
+      "dateStarted": "2022-09-04 17:17:50.187",
+      "dateFinished": "2022-09-04 17:18:02.355",
       "status": "FINISHED"
     },
     {
       "title": "The educational status of web item returners ",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS educational_status_web_item_returners;\nCREATE TABLE IF NOT EXISTS educational_status_web_item_returners(\n    SELECT cd_education_status web_education_status, COUNT(*) web_demo_count\n    FROM web_returns\n    JOIN customer_demographics ON wr_returning_cdemo_sk \u003d cd_demo_sk\n    GROUP BY web_education_status\n    ORDER BY web_demo_count DESC\n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:50:00.392",
+      "dateUpdated": "2022-09-04 17:18:02.401",
       "progress": 38,
       "config": {
         "tableHide": true,
@@ -367,16 +367,16 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d33"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d33"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d34"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d34"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d35"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d35"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d36"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d36"
             }
           ],
           "interpreterSettingId": "spark"
@@ -386,16 +386,16 @@
       "jobName": "paragraph_1662292252783_1842003052",
       "id": "paragraph_1662292252783_1842003052",
       "dateCreated": "2022-09-04 11:50:52.784",
-      "dateStarted": "2022-09-04 13:41:23.277",
-      "dateFinished": "2022-09-04 13:41:32.990",
+      "dateStarted": "2022-09-04 17:18:02.615",
+      "dateFinished": "2022-09-04 17:18:09.777",
       "status": "FINISHED"
     },
     {
       "title": "Most expensive and cheapest items in each category",
       "text": "%spark.sql\n\nDROP TABLE IF EXISTS most_expensive_cheapest_items;\nCREATE TABLE IF NOT EXISTS most_expensive_cheapest_items(\n    WITH item_c AS(\n        SELECT DISTINCT i_category category, \n        CASE\n            WHEN FIRST_VALUE(i_product_name) OVER w  IS NOT NULL THEN FIRST_VALUE(i_product_name) OVER w \n            ELSE \u0027unknown\u0027\n        END most_expensive_item, \n        CASE\n            WHEN LAST_VALUE(i_product_name) OVER w IS NOT NULL THEN LAST_VALUE(i_product_name) OVER w \n            ELSE \u0027unknown\u0027\n        END cheapest_item, \n        MAX(i_current_price) OVER w price_of_most_expensive_item,\n        MIN(i_current_price) OVER w price_of_cheapest_item\n        FROM item\n        WHERE i_category IS NOT NULL\n        WINDOW w AS(\n                PARTITION BY i_category ORDER BY i_current_price DESC\n                RANGE BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING\n            )\n    )\n    SELECT * FROM item_c\n)",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:41:33.087",
-      "progress": 35,
+      "dateUpdated": "2022-09-04 17:18:09.818",
+      "progress": 0,
       "config": {
         "tableHide": true,
         "editorSetting": {
@@ -429,13 +429,13 @@
           "group": "spark",
           "values": [
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d37"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d37"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d38"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d38"
             },
             {
-              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:36649/jobs/job?id\u003d39"
+              "jobUrl": "http://bigspark-cluster-m.us-central1-a.c.mod3v-playground-360611.internal:44279/jobs/job?id\u003d39"
             }
           ],
           "interpreterSettingId": "spark"
@@ -445,14 +445,14 @@
       "jobName": "paragraph_1662292565803_1755591802",
       "id": "paragraph_1662292565803_1755591802",
       "dateCreated": "2022-09-04 11:56:05.803",
-      "dateStarted": "2022-09-04 13:41:33.348",
-      "dateFinished": "2022-09-04 13:41:40.202",
+      "dateStarted": "2022-09-04 17:18:10.028",
+      "dateFinished": "2022-09-04 17:18:14.379",
       "status": "FINISHED"
     },
     {
       "text": "%spark.sql\n",
       "user": "anonymous",
-      "dateUpdated": "2022-09-04 13:41:40.246",
+      "dateUpdated": "2022-09-04 17:18:14.434",
       "progress": 0,
       "config": {
         "tableHide": true,
@@ -483,8 +483,8 @@
       "jobName": "paragraph_1662293287992_1433537326",
       "id": "paragraph_1662293287992_1433537326",
       "dateCreated": "2022-09-04 12:08:07.992",
-      "dateStarted": "2022-09-04 13:41:40.561",
-      "dateFinished": "2022-09-04 13:41:40.585",
+      "dateStarted": "2022-09-04 17:18:14.638",
+      "dateFinished": "2022-09-04 17:18:14.657",
       "status": "FINISHED"
     }
   ],
@@ -499,6 +499,6 @@
     "isZeppelinNotebookCronEnable": false
   },
   "info": {
-    "isRunning": false
+    "isRunning": true
   }
 }
