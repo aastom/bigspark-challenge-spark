@@ -1,3 +1,5 @@
 .idea/
-.env
-.tfvars 
+**/*.env
+**/*.tfvars
+**/*.tfstate
+**/*.tfstate.backup
